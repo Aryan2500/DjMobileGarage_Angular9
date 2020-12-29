@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color:white;
+    
+    
+}
+.fas{
+    font-size: 30px;
+    color: white;
+}
+
+.err-msg{
+    color: red !important;
+    font-weight: bolder !important;
+}

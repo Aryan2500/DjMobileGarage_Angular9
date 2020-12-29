@@ -1,0 +1,120 @@
+<div class="container mt-4 justify-content-center">
+  <div class="row">
+    <div class="mt-2 col-lg-6">
+      <img src="../../../assets/phone.jpg" class="img-fluid" />
+    </div>
+    <div class="mt-2 col-lg-6 from-container">
+      <form
+        [formGroup]="regForm"
+        (ngSubmit)="register(regForm)"
+        class="p-3 "
+        autocomplete="off"
+      >
+        <fieldset>
+          <legend class="text-center">D.J. Mobile Garage</legend>
+          <hr>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+              aria-describedby="name"
+              placeholder="Enter name"
+            />
+            <!-- error msg start -->
+            <small
+              class="err-msg form-text text-muted"
+              *ngIf="
+                regForm.get('name').touched &&
+                regForm.get('name').hasError('required')
+              "
+              >* name is required</small
+            >
+            <small
+              class="err-msg form-text text-muted"
+              *ngIf="
+                regForm.get('name').touched &&
+                regForm.get('name').hasError('minlength')
+              "
+              >* name should be atleast 3 character long</small
+            >
+            <!-- error msg end-->
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              formControlName="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <!-- error msg start -->
+            <small
+              class="err-msg form-text text-muted"
+              *ngIf="
+                regForm.get('email').touched &&
+                regForm.get('email').hasError('required')
+              "
+              >* email is required</small
+            >
+            <small
+              class="err-msg form-text text-muted"
+              *ngIf="
+                regForm.get('email').touched &&
+                regForm.get('email').hasError('email')
+              "
+              >* enter a valid email</small
+            >
+            <!-- error msg end-->
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <small *ngIf="regForm.get('password').touched && regForm.get('password').hasError('required')" class="err-msg form-text text-muted"
+              >* password is required</small
+            >
+            <small *ngIf="regForm.get('password').touched && regForm.get('password').hasError('minlength')" class="err-msg form-text text-muted"
+              >* password should be atleast 5 character long</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword2"
+              formControlName="cpassword"
+              placeholder="Re-type Password"
+            />
+            <small *ngIf="regForm.get('cpassword').touched && regForm.get('cpassword').hasError('required')" class="err-msg form-text text-muted"
+              >* confirmation password is required</small
+            >
+            <small *ngIf="confirmPassError==true" class="err-msg form-text text-muted"
+              >* password do not match</small
+            >
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!regForm.valid"
+          >
+            Register
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
