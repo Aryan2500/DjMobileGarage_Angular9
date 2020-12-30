@@ -1,5 +1,10 @@
 <div class="container mt-4 justify-content-center">
+  <div *ngIf="data != undefined" class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Well done!</strong> You have successfully created you account  <a href="/login" class="alert-link">click here </a> to login.
+  </div>
   <div class="row">
+    
     <div class="mt-2 col-lg-6">
       <img src="../../../assets/phone.jpg" class="img-fluid" />
     </div>
@@ -63,9 +68,14 @@
             >
             <small
               class="err-msg form-text text-muted"
+              *ngIf="statusCode===409"
+              >* email is already in use , try another email</small
+            >
+            <small
+              class="err-msg form-text text-muted"
               *ngIf="
-                regForm.get('email').touched &&
-                regForm.get('email').hasError('email')
+               ( regForm.get('email').touched &&
+                regForm.get('email').hasError('email')) || statusCode===422
               "
               >* enter a valid email</small
             >
