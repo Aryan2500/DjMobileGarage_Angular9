@@ -14,42 +14,37 @@
   
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="user/dashboard"
+        <li class="nav-item ">
+          <a class="nav-link"  [routerLink]="['/user/dashboard']" [routerLinkActive]="['active']"
             >Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+        <li *ngIf="isLogin" class="nav-item">
+          <a class="nav-link" [routerLink]="['/user/profile']" [routerLinkActive]="['active']">Profile</a>
         </li>
         
-        <li class="nav-item dropdown">
+        <li *ngIf="isLogin"  class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             data-toggle="dropdown"
-            href="#"
             role="button"
             aria-haspopup="true"
             aria-expanded="false"
             >Manage Appointment </a
           >
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Book New &nbsp;<i class="fa fa-plus" ></i></a>
+            <a class="dropdown-item"  [routerLink]="['/user/new-appointment']" [routerLinkActive]="['active']" >Book New &nbsp;<i class="fa fa-plus" ></i></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">History &nbsp; <i class="fa fa-history" aria-hidden="true"></i>
+            <a class="dropdown-item" [routerLink]="['/user/all-appointments']" [routerLinkActive]="['active']">History &nbsp; <i class="fa fa-history" aria-hidden="true"></i>
             </a>
           </div>
         </li>
       </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-         
-        </form> -->
-  
-      <a class="nav-link" title="Logout" href="/login" (click)="logout()"
+       
+      <a *ngIf="isLogin"  class="nav-link" title="Logout" routerLink="/login" (click)="logout()"
         ><i class="fas fa-sign-out-alt"></i
       ></a>
+      <a *ngIf="!isLogin"  class="nav-link" title="Login" routerLink="/login" ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
     </div>
   </nav>

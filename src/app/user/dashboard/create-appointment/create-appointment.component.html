@@ -1,0 +1,225 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="container">
+  <div class="row" [ngStyle]="{ 'margin-top': '120px' }">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <form
+        autocomplete="off"
+        [formGroup]="appointForm"
+        (submit)="create_Appointment(appointForm)"
+      >
+        <legend>New Appointment &nbsp; <i class="fa fa-plus"></i></legend>
+        <br />
+        <div class="form-group">
+          <label for="exampleInputPassword1">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Title"
+            formControlName="problem_Title"
+          />
+          <small
+            id="fileHelp"
+            class="form-text text-muted err-msg"
+            *ngIf="
+              appointForm.get('problem_Title').touched &&
+              appointForm.get('problem_Title').hasError('required')
+            "
+            >* title is required</small
+          >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="exampleTextarea"
+            >Desciption Of Your Phone's Problem</label
+          >
+          <textarea
+            class="form-control"
+            formControlName="problem_Description"
+            id="exampleTextarea"
+            rows="3"
+          ></textarea>
+          <small
+          id="fileHelp"
+          class="form-text text-muted err-msg"
+          *ngIf="
+            appointForm.get('problem_Description').touched &&
+            appointForm.get('problem_Description').hasError('required')
+          "
+          >* short description is required</small
+        >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="datepicker">Date</label>
+          <input
+            type="text"
+            placeholder="Pick Date"
+            class="form-control"
+            appDatepicker
+            id="datepicker"
+            formControlName="pickup_Date" #datapicker="datepicker" (dateEventEmmiter)="dateEventEmmiter($event)"
+          />
+          <small
+          id="fileHelp"
+          class="form-text text-muted err-msg"
+          *ngIf="
+            appointForm.get('pickup_Date').touched &&
+            appointForm.get('pickup_Date').hasError('required')
+          "
+          >* pick up date is required</small
+        >
+        </div>
+        <br />
+        <div class="form-grou">
+          <label for="exampleSelect1">Time</label>
+          <div class="d-flex p-2">
+            <select
+              class="form-control"
+              id="exampleSelect1"
+              formControlName="pickup_Time"
+            >
+            <option value="" [selected] disabled>select date</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option></select
+            >&nbsp;&nbsp;&nbsp;
+            <select
+              class="form-control"
+              id="exampleSelect1"
+              formControlName="meridian"
+            > <option value="" [selected] disabled>select AM or PM</option>
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+          <small
+          id="fileHelp"
+          class="form-text text-muted err-msg"
+          *ngIf="(
+            appointForm.get('pickup_Time').touched &&
+            appointForm.get('pickup_Time').hasError('required')) ||(appointForm.get('meridian').touched && appointForm.get('meridian').hasError('required'))
+          "
+          >* pick up date and meridian is required</small
+        >
+          
+        </div>
+        <br />
+
+        <div class="form-group">
+          <label for="exampleTextarea2">Address</label>
+          <textarea
+            class="form-control"
+            formControlName="user_Address"
+            id="exampleTextarea2"
+            rows="3"
+          ></textarea>
+          <small
+          id="fileHelp"
+          class="form-text text-muted err-msg"
+          *ngIf="
+            appointForm.get('user_Address').touched &&
+            appointForm.get('user_Address').hasError('required')
+          "
+          >* address is required</small
+        >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            formControlName="user_Phone"
+            placeholder="Ex. 9594569294"
+            maxlength="10"
+          />
+          <small
+          id="fileHelp"
+          class="form-text text-muted err-msg"
+          *ngIf="
+            appointForm.get('user_Phone').touched &&
+            appointForm.get('user_Phone').hasError('required')
+          "
+          >* phone number is required</small
+        >
+        <small
+        id="fileHelp"
+        class="form-text text-muted err-msg"
+        *ngIf="
+          appointForm.get('user_Phone').touched &&
+          appointForm.get('user_Phone').hasError('minlength')
+        "
+        >* phone number should be 10 digit long</small
+      >
+      <small
+        id="fileHelp"
+        class="form-text text-muted err-msg"
+        *ngIf="
+          appointForm.get('user_Phone').touched &&
+          appointForm.get('user_Phone').hasError('pattern')
+        "
+        >* only  numbers allowed</small
+      >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="exampleInputFile">Upload Image</label>
+          <input
+            type="file"
+            formControlName="problem_Image"
+            class="form-control-file"
+            id="exampleInputFile"
+          />
+          <small id="fileHelp" class="form-text text-muted"
+            >upload image of your phone (optional)</small
+          >
+        </div>
+
+        <button
+          [ngStyle]="{ 'margin-bottom': '50px' }"
+          type="submit"
+          class="float-right btn btn-primary"
+          [disabled]="!appointForm.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="col-lg-2">
+   
+    </div>
+  </div>
+</div>
+<!-- <app-modal [title]="title" [msg]="msg" [showModal]="showModal"></app-modal> -->
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{this.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{this.msg}}
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" [routerLink]="['/user/all-appointments']" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>

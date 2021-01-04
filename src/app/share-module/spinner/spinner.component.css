@@ -1,0 +1,11 @@
+.spinner-container {
+    width: 100%;
+    opacity: .5;
+    position: fixed;
+    height: 100%;
+    z-index: 99 !important;
+    
+  }
+  .spinner{
+      margin-top: 300px;
+  }

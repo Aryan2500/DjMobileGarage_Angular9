@@ -5,12 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AuthModule} from './auth/auth.module';
 import { UserModule }  from './user/user.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './token.interceptor';
+
 // import { HttpClientModule} from "@angular/common/http"
 // import { AuthServiceService } from './auth/auth-service.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
    
     
   ],
@@ -18,10 +23,17 @@ import { UserModule }  from './user/user.module';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    UserModule
+    UserModule,
+    BrowserAnimationsModule
     // HttpClientModule
   ],
-  providers: [ ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   exports:[]
 })

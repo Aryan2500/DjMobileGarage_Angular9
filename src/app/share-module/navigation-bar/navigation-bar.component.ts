@@ -9,7 +9,15 @@ import { AuthServiceService } from 'src/app/auth/auth-service.service';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor( private authService: AuthServiceService , private router:Router) { }
+  isLogin :boolean
+  constructor( private authService: AuthServiceService , private router:Router) {
+      if(this.authService.isTokenPresent()){
+          this.isLogin = true
+      }else{
+        this.isLogin = false
+      }
+
+   }
 
   ngOnInit(): void {
   }
