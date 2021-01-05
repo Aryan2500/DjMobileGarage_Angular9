@@ -24,6 +24,7 @@ export class CreateAppointmentComponent implements OnInit {
   msg: string;
   title: string;
   showModal =  false;
+  product: any;
 
   ngOnInit(): void {}
  
@@ -68,13 +69,20 @@ export class CreateAppointmentComponent implements OnInit {
     this.appointmentService
       .postAppointment(appointmentData)
       .subscribe((data) => {
-        const product = data;
-        if (product) {          
+        this.product = data;
+        if (this.product) {          
           this.title = "Appointment Fixed";
           this.msg =
             "Your Appointment is successfuly Fixed - Appointment Number is " +
-            product.appointment_number;
-            $("#modal").modal("show")
+             this.product.appointment_number;
+              
+            // $("#modal").modal("show")
+            // $("#modal").modal({backdrop: 'static', keyboard: false})
+            $('#modal').modal({
+              backdrop: 'static',
+              keyboard: false, 
+              show: true
+      }); 
         }
       });
   }

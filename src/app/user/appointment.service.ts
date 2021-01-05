@@ -20,4 +20,9 @@ export class AppointmentService {
     return this.httpClient.post(url ,appointmentData ,{headers:this.header})
 
   }
+
+  getAppointment(page){
+    const url= this.baseUrl +"/appointment?page="+page
+    return this.httpClient.get(url , {headers:this.header})
+  }
 }
