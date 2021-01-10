@@ -1,0 +1,10 @@
+{
+    "/proxy": {
+    "target": "https://djmg1994.herokuapp.com/",
+    "secure": false,
+    "pathRewrite": {
+    "^/proxy": ""
+   
+  }
+}
+}

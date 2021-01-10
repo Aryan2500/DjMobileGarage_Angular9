@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import{ catchError , tap , mapTo}from 'rxjs/operators'
 import { HttpClient , HttpHeaders} from  "@angular/common/http"
 import {GlobalConstants} from "../common/global_constant"
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,13 +18,23 @@ export class AuthServiceService {
     const url = `${GlobalConstants.apiBaseURL}/user/login`
    return this.httpClient.post(url ,credentials,{headers: this.header}).pipe(tap(data=>this.saveToken(data) ) , mapTo(true) )
   }
+
+  postAdminLoginData(credentials){
+    const url = GlobalConstants.apiBaseURL+"/admin/login"
+    return this.httpClient.post(url , credentials , {headers:this.header}).pipe(tap(data=>this.saveToken(data)), mapTo(true))
+  }
   saveToken(data){
     localStorage.setItem('djtoken' , data.token)
-    console.log(data.token)
+    localStorage.setItem('role', data.role)
+    // console.log(data.token +"   " + "role " + data.role)
   }
 
   getCurrentToken(){
     return localStorage.getItem('djtoken')
+  }
+
+  getUserRole(){
+    return parseInt( localStorage.getItem('role'))
   }
 
   isTokenPresent(){

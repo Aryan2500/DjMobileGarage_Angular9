@@ -7,7 +7,7 @@ import { ListAppointmentComponent } from "./dashboard/list-appointment/list-appo
 import { ProfileComponent } from "./dashboard/profile/profile.component";
 
 const routes: Routes = [
-  { path: "dashboard", component: HomeComponent, canActivate: [] },
+  { path: "dashboard", component: HomeComponent },
   {path:"reg" , component:RegisterComponent} ,
   {path:"profile" , component:ProfileComponent},
   {path:"new-appointment" ,component:CreateAppointmentComponent},

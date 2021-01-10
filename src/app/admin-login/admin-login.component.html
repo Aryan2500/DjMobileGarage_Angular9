@@ -1,0 +1,97 @@
+<div id="login">
+  <div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+      <div id="login-column" class="col-md-6">
+          
+        <div id="login-box" class="col-md-12">
+            <div class="input-group  justify-content-center mt-4"  [ngStyle]="{'text-align':'center'}" *ngIf=" status == 401">
+                <div class="input-group-append">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Authentication Failed</strong><br>email or password is incorrect !
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+          <form
+            id="login-form"
+            class="form"
+            [formGroup]="adminLoginForm"
+            (submit)="adminLogin(adminLoginForm)"
+            autocomplete="off"
+          >
+            <h3 class="text-center text-info">Admin Login</h3>
+            <hr />
+            <div class="form-group">
+              <label for="email" class="text-info">Email:</label><br />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+              />
+              <small
+                *ngIf="
+                  adminLoginForm.get('email').touched &&
+                  adminLoginForm.get('email').hasError('required')
+                "
+                class="err-msg"
+              >
+                * email is required
+              </small>
+              <small
+                class="err-msg mb-1"
+                *ngIf="
+                  (adminLoginForm.get('email').touched &&
+                    adminLoginForm.get('email').hasError('email')) ||
+                  status == 422
+                "
+                >* email address is not valid</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="password" class="text-info">Password:</label><br />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+              />
+              <small
+                *ngIf="
+                  adminLoginForm.get('password').touched &&
+                  adminLoginForm.get('password').hasError('required')
+                "
+                class="err-msg"
+              >
+                * password is required
+              </small>
+              <small
+                *ngIf="
+                  adminLoginForm.get('password').touched &&
+                  adminLoginForm.get('password').hasError('minlength')
+                "
+                class="err-msg"
+              >
+                * password must atleast 5 charaters long
+              </small>
+
+            </div>
+            <div class="form-group">
+              <input
+                type="submit"
+                name="submit"
+                class="btn btn-info btn-md"
+                value="Go Ahead"
+                [disabled]="!adminLoginForm.valid"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

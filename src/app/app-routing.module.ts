@@ -1,20 +1,33 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AdminLoginComponent } from "./admin-login/admin-login.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { SignInGuard } from "./guards/sign-in.guard";
+import { AdminLayoutComponent } from "./layout/admin-layout/admin-layout.component";
+import { ADMIN_ROUTES } from "./routes/admin-layout-route";
 
 const routes: Routes = [
-  // {
-  //   path: "auth",
-  //   loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
-  // },
   {
-    path:"login",
-    component:LoginComponent,
-    canActivate:[SignInGuard]
+    path: "admin",
+    component: AdminLayoutComponent,
+    children: ADMIN_ROUTES,
   },
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) , canLoad:[AuthGuard] }
+  {
+    path:"admin-login",
+    component: AdminLoginComponent,
+    canActivate: [SignInGuard],
+  },
+  {
+    path: "login",
+    component: LoginComponent,
+    canActivate: [SignInGuard],
+  },
+  {
+    path: "user",
+    loadChildren: () => import("./user/user.module").then((m) => m.UserModule),
+    canLoad: [AuthGuard],
+  },
 ];
 
 @NgModule({

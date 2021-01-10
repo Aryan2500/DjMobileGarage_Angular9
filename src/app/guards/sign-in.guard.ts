@@ -13,6 +13,11 @@ export class SignInGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       if(this.authService.isTokenPresent()){
+          if(this.authService.getUserRole() === 1){
+            this.router.navigate(['/admin/'])
+            console.log("from sighn in guard")
+            return false
+          }
         this.router.navigate(['/user/dashboard'])
         return false
       }

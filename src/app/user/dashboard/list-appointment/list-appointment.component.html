@@ -1,8 +1,11 @@
 <app-navigation-bar></app-navigation-bar>
 <div class="container-fluid" [ngStyle]="{ 'margin-top': '120px' }">
+
   <div class="row">
     <div class="col-lg-2"></div>
-    <div class="col-lg-8">
+    <div class="col-lg-8" *ngIf="appointments.length;else msgForNoAppointment">
+      <h2 ><i class="fa fa-list" aria-hidden="true" ></i>&nbsp;
+         Appointments You have Booked so far...</h2>
       <div
         class="card text-white mb-4 shadow"
         *ngFor="let appointment of appointments"
@@ -61,3 +64,6 @@
     <div class="col-lg-2"></div>
   </div>
 </div>
+<ng-template #msgForNoAppointment>
+  <h2>You have not book any appointment so far ....  <br> <a [routerLink]="['/user/new-appointment']" class="btn btn-primary">Click Here</a> to Book your First Appointment</h2>
+</ng-template>

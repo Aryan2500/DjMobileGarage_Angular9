@@ -8,6 +8,10 @@ import { UserModule }  from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import {ReactiveFormsModule} from '@angular/forms'
 
 // import { HttpClientModule} from "@angular/common/http"
 // import { AuthServiceService } from './auth/auth-service.service';
@@ -15,6 +19,9 @@ import { TokenInterceptor } from './token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
+    SpinnerComponent,
+    AdminLayoutComponent,
+    AdminLoginComponent
     
    
     
@@ -24,7 +31,8 @@ import { TokenInterceptor } from './token.interceptor';
     AppRoutingModule,
     AuthModule,
     UserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
     // HttpClientModule
   ],
   providers: [

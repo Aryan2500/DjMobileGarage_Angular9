@@ -15,6 +15,7 @@ export class ListAppointmentComponent implements OnInit {
   pageNumber: any;
   currentPage: any;
   prevPage: any;
+  totalDocs :any;
 
   constructor(
     private appointmentService: AppointmentService,
@@ -22,6 +23,7 @@ export class ListAppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.gotoTop()
     this.pageNumber = this.route.snapshot.queryParams["page"]
     this.getAppointmentHistory(this.pageNumber)
    
@@ -36,7 +38,8 @@ export class ListAppointmentComponent implements OnInit {
       this.nextPage = data["nextPage"];
       this.prevPage = data["prevPage"];
       this.currentPage = data["page"];
-      // console.log(this.appointments);
+      this.totalDocs = data["totalDocs"]
+      console.log(this.appointments);
       console.log(data);
       
     });
@@ -50,7 +53,8 @@ export class ListAppointmentComponent implements OnInit {
   }
 
   gotoTop() {
-    window.scroll({ 
+    
+    window.scroll({
       top: 0, 
       behavior: 'smooth' 
     });

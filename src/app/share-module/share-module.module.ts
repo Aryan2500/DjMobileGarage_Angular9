@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { SpinnerComponent } from './spinner/spinner.component';
+
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, SpinnerComponent, ],
+  declarations: [HomeComponent, ],
   imports: [
     CommonModule
   ], 
- exports:[HomeComponent , SpinnerComponent , ]
+ exports:[HomeComponent ,  ]
 })
 export class ShareModuleModule { }

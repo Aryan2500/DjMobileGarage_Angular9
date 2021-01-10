@@ -19,5 +19,8 @@ html {
     color: red !important;
     font-weight: bolder !important;
 }
+.box-shade{
+    box-shadow: 5px 10px #888888;
+}
 
 
