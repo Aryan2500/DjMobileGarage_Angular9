@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminAppointmentService } from 'src/app/services/admin-appointment.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -7,9 +8,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentListComponent implements OnInit {
 
-  constructor() { }
+  heading:string
+  appointments: any;
+  hasNext: boolean;
+  hasPrev: boolean;
+  nextPage: boolean;
+  pageNumber: any;
+  currentPage: any;
+  prevPage: any;
+  totalDocs :any;
+
+  
+  constructor(private appointmentService : AdminAppointmentService) { }
 
   ngOnInit(): void {
+    this.heading = "All Appointments"
+    this.allAppointments()
   }
 
+  allAppointments(){
+    this.appointmentService.getAllAppointments().subscribe((data)=>{
+      this.appointments = data["docs"];
+      this.hasNext = data["hasNextPage"];
+      this.hasPrev = data["hasPrevPage"];
+      this.nextPage = data["nextPage"];
+      this.prevPage = data["prevPage"];
+      this.currentPage = data["page"];
+      this.totalDocs = data["totalDocs"]
+      console.log(data)
+    })
+  }
+
+  getNextPageOrPrevPage(pageNumber){
+    this.gotoTop()
+   this.allAppointments()
+  }
+
+  gotoTop() {
+    
+    window.scroll({
+      top: 0, 
+      behavior: 'smooth' 
+    });
+  }
 }

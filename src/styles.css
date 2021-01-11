@@ -20,7 +20,20 @@ html {
     font-weight: bolder !important;
 }
 .box-shade{
-    box-shadow: 5px 10px #888888;
+    box-shadow: 2px 2px 8px 3px  #888888;
 }
 
+.icon-size{
+    font-size: 15px;
+}
 
+.appoint-number-color{
+    
+    text-shadow: 2px 3px 4px gray; 
+    font-size:26px  !important;
+    font-weight: bold !important;
+}
+
+.appointment_title{
+    font-size: 30px !important;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Route, Router } from "@angular/router";
-import { AppointmentService } from "../../appointment.service";
+import { AppointmentService } from "../../../services/appointment.service";
 declare var $ :any
 @Component({
   selector: "app-list-appointment",

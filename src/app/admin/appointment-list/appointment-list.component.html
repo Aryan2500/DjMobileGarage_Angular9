@@ -1,1 +1,108 @@
-<p>appointment-list works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8" *ngIf="appointments.length; else msgForNoAppointment">
+      <hr>
+      <h2 class="form-inline justify-content-center">
+        {{ heading }}
+        <form class=" my-2 my-lg-0 pl-4">
+          <input
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+          />
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </h2>
+      <hr>
+
+      <div
+        class="card text-white mb-4 shadow"
+        *ngFor="let appointment of appointments"
+        [ngClass]="{
+          'bg-success': appointment.isRepaired,
+          'bg-dark': !appointment.isRepaired
+        }"
+      >
+        <div class="card-header shade" *ngIf="appointment.isRepaired">
+          Repaired Successfuly <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <div class="card-header shade" *ngIf="!appointment.isRepaired">
+          Pending <i class="fa fa-hourglass-start" aria-hidden="true"></i>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-9">
+              <h2 class="card-title shade">
+                <b>Appointment ID : {{ appointment.appointment_number }}</b>
+              </h2>
+              <p class="card-text shade">
+                Created On -
+                <i>{{
+                  appointment.created_on | date: "dd-MMM-yy h:mm:ss a "
+                }}</i>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <!-- <i *ngIf="appointment.isRepaired"
+                class="fa fa-check shade"
+                [ngStyle]="{ 'font-size': '80px' }"
+                aria-hidden="true"
+              ></i>
+              <i *ngIf="!appointment.isRepaired"
+                class="fa fa-hourglass-half"
+                [ngStyle]="{ 'font-size': '80px' }"
+                aria-hidden="true"
+              ></i> -->
+              <button class="btn icon-size box-shade btn-primary">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> View
+                Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- pagination start -->
+      <div class="text-xs-center">
+        <ul class="pagination pagination-lg justify-content-center">
+          <li class="page-item" [ngClass]="{ disabled: !hasPrev }">
+            <a
+              class="page-link"
+              [routerLink]="['/user/all-appointments/']"
+              [queryParams]="{ page: prevPage }"
+              (click)="getNextPageOrPrevPage(prevPage)"
+              >&laquo;</a
+            >
+          </li>
+          <li class="page-item active">
+            <a class="page-link">{{ currentPage }}</a>
+          </li>
+          <li class="page-item" [ngClass]="{ disabled: nextPage == null }">
+            <a
+              class="page-link"
+              [routerLink]="['/user/all-appointments/']"
+              [queryParams]="{ page: nextPage }"
+              (click)="getNextPageOrPrevPage(nextPage)"
+              >&raquo;</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- pagination end -->
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<ng-template #msgForNoAppointment>
+  <h2>
+    You have not book any appointment so far .... <br />
+    <a [routerLink]="['/user/new-appointment']" class="btn btn-primary"
+      >Click Here</a
+    >
+    to Book your First Appointment
+  </h2>
+</ng-template>
+<!-- <button [disabled]="a===true"  (click)="cancel()" class="btn icon-size box-shade ml-2 btn-danger float-right"><i class="fa fa-ban" aria-hidden="true"></i> REJECT</button>
+          <button [disabled]="a===false" (click)="accept()" class=" icon-size btn box-shade btn-success float-right"><i class="fa fa-check-circle " aria-hidden="true"></i> ACCEPT</button> -->

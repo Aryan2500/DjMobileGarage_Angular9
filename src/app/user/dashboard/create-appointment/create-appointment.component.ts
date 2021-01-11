@@ -10,7 +10,7 @@ import {
 import { Router } from "@angular/router";
 declare var $ : any
 
-import { AppointmentService } from "../../appointment.service";
+import { AppointmentService } from "../../../services/appointment.service";
 
 @Component({
   selector: "app-create-appointment",

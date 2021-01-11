@@ -52,7 +52,7 @@
             <a class="page-link"  [routerLink]="['/user/all-appointments/']" [queryParams]="{'page': prevPage}" (click)="getNextPageOrPrevPage(prevPage)">&laquo;</a>
           </li>
           <li class="page-item active">
-            <a class="page-link" href="#">{{currentPage}}</a>
+            <a class="page-link">{{currentPage}}</a>
           </li>
           <li class="page-item" [ngClass]="{'disabled':nextPage==null}">
             <a class="page-link"  [routerLink]="['/user/all-appointments/']" [queryParams]="{'page': nextPage}" (click)="getNextPageOrPrevPage(nextPage)">&raquo;</a>
