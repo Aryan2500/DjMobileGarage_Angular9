@@ -30,6 +30,7 @@ html {
 .appoint-number-color{
     
     text-shadow: 2px 3px 4px gray; 
+    color: white;
     font-size:26px  !important;
     font-weight: bold !important;
 }

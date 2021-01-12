@@ -15,9 +15,14 @@ export class AdminAppointmentService {
 
   }
 
-  getAllAppointments(){
+  fetchAllAppointments(){
     const url = this.baseUrl + '/appointments'
 
     return this.http.get(url , {headers: this.header})
+  }
+
+  fetchSingleAppointmentDetails( id ){
+    const url = this.baseUrl + '/appointment/'+id
+    return this.http.get(url , {headers:this.header})
   }
 }

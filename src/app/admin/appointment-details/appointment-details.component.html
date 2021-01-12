@@ -1,0 +1,108 @@
+<div class="container p-4" *ngIf="details!=undefined" >
+    <div class="row pl-4 pr-4 justify-content-center">
+        <h2 class="appointment_title" style="letter-spacing: 8px;" >{{details.appointment_number}}</h2>
+    </div>
+    <hr>
+  <div class="row">
+    <div class="col-lg-7 p-4 ">
+      <div class="row">
+        <div class="col-lg-12">
+          <div *ngIf="details.problem_Image!=null"
+            id="carouselExampleIndicators"
+            class="carousel slide box-shade"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="1"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="2"
+              ></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  class="d-block w-100"
+                  src="{{details.problem_Image}}"
+                  alt="First slide"
+                  height="500"
+                />
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div *ngIf="true">
+                <img class="img-fluid" src="../../../assets/image-not-found.png" height="500" alt="Image not found">
+          </div>
+        </div>
+
+      </div>
+      <div class="row pt-4 text-center">
+        <div class="col-sm-6 ">
+        
+         
+          <button class="icon-size btn box-shade btn-success ml-2">
+            <i class="fa fa-check-circle" aria-hidden="true"></i> ACCEPT
+          </button>
+        
+        </div>
+        <div class="col-sm-6">
+           
+            <button class="btn icon-size box-shade mr-2 btn-danger">
+                <i class="fa fa-ban" aria-hidden="true"></i> REJECT
+              </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5  pt-4">
+      <div class="row">
+        <h1 class="appointment_title">Phone is not getting on</h1>
+      </div>
+     
+      <div class="row ">
+        <p id="description_box">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries
+        </p>
+      </div>
+      <div class="row border mt-4 p-4 box-shade bg-info justify-content-center"  id="button-wrapper">
+        <h1 class="appoint-number-color">PickUp Date : 3/02/2020</h1> 
+        <h1 class="appoint-number-color"> PickUp Time : 3pm</h1>
+      </div>
+    </div>
+  </div>
+</div>

@@ -27,7 +27,7 @@ export class AppointmentListComponent implements OnInit {
   }
 
   allAppointments(){
-    this.appointmentService.getAllAppointments().subscribe((data)=>{
+    this.appointmentService.fetchAllAppointments().subscribe((data)=>{
       this.appointments = data["docs"];
       this.hasNext = data["hasNextPage"];
       this.hasPrev = data["hasPrevPage"];
