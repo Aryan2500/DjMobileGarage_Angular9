@@ -9,7 +9,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { CreateAppointmentComponent } from './dashboard/create-appointment/create-appointment.component';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms'
-import { MaterialModule} from '../material/material/material.module'
+
 import { DatepickerDirective } from '../directive/datepicker.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { ListAppointmentComponent } from './dashboard/list-appointment/list-appointment.component'
@@ -24,7 +24,6 @@ import { ListAppointmentComponent } from './dashboard/list-appointment/list-appo
     ReactiveFormsModule,
     UserRoutingModule,
     ShareModuleModule,
-    MaterialModule,
     HttpClientModule
   ],
   exports:[ ]

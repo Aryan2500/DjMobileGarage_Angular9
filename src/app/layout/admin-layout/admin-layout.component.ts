@@ -33,6 +33,8 @@ export class AdminLayoutComponent implements OnInit {
             isClosed = true;
           }
       }
+
+      
       
       $('[data-toggle="offcanvas"]').click(function () {
             $('#wrapper').toggleClass('toggled');
