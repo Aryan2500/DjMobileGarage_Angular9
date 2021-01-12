@@ -6,8 +6,8 @@ import { GlobalConstants } from '../common/global_constant';
 })
 export class AdminAppointmentService {
 
-  header: HttpHeaders
-  baseUrl: string;
+  private header: HttpHeaders
+  private baseUrl: string;
   constructor( private http : HttpClient) { 
     this.header = new HttpHeaders()
     this.baseUrl = GlobalConstants.apiBaseURL + '/admin'
@@ -24,5 +24,16 @@ export class AdminAppointmentService {
   fetchSingleAppointmentDetails( id ){
     const url = this.baseUrl + '/appointment/'+id
     return this.http.get(url , {headers:this.header})
+  }
+
+  setAppointmentAccepted(id){
+    const url = this.baseUrl+'/appointment/approve/'+id
+    return this.http.patch(url , {} , {headers:this.header})
+
+  }
+
+  setAppointmentRejected(id){
+    const url = this.baseUrl+'/appointment/reject/'+id
+    return this.http.patch(url , {} , {headers:this.header})
   }
 }
