@@ -72,14 +72,14 @@
         <div class="col-sm-6 ">
         
          
-          <button class="icon-size btn box-shade btn-success ml-2">
+          <button class="icon-size btn box-shade btn-success">
             <i class="fa fa-check-circle" aria-hidden="true"></i> ACCEPT
           </button>
         
         </div>
         <div class="col-sm-6">
            
-            <button class="btn icon-size box-shade mr-2 btn-danger">
+            <button class="btn icon-size box-shade btn-danger">
                 <i class="fa fa-ban" aria-hidden="true"></i> REJECT
               </button>
         </div>
@@ -87,21 +87,17 @@
     </div>
     <div class="col-lg-5  pt-4">
       <div class="row">
-        <h1 class="appointment_title">Phone is not getting on</h1>
+        <h1 class="appointment_title">{{details.problem_Title}}</h1>
       </div>
      
       <div class="row ">
         <p id="description_box">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries
+         {{ details.problem_Desciption}}
         </p>
       </div>
       <div class="row border mt-4 p-4 box-shade bg-info justify-content-center"  id="button-wrapper">
-        <h1 class="appoint-number-color">PickUp Date : 3/02/2020</h1> 
-        <h1 class="appoint-number-color"> PickUp Time : 3pm</h1>
+        <h1 class="appoint-number-color">PickUp Date : {{details.pickup_Date}}</h1> 
+        <h1 class="appoint-number-color"> PickUp Time : {{details.pickup_Time}}</h1>
       </div>
     </div>
   </div>

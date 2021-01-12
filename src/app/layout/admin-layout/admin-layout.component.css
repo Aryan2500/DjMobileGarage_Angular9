@@ -101,6 +101,7 @@ html { height: 100%;}
   border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  
 }
 .sidebar-nav li:hover:before,
 .sidebar-nav li.open:hover:before {

@@ -66,6 +66,8 @@ export class CreateAppointmentComponent implements OnInit {
       address: appointForm.value.user_Address,
       phone: appointForm.value.user_Phone,
     };
+    console.log(appointmentData)
+
     this.appointmentService
       .postAppointment(appointmentData)
       .subscribe((data) => {
