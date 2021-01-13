@@ -17,6 +17,7 @@ export class AppointmentListComponent implements OnInit {
   currentPage: any;
   prevPage: any;
   totalDocs :any;
+  msg: string;
 
   
   constructor(private appointmentService : AdminAppointmentService) { }
@@ -28,14 +29,26 @@ export class AppointmentListComponent implements OnInit {
 
   allAppointments(){
     this.appointmentService.fetchAllAppointments().subscribe((data)=>{
-      this.appointments = data["docs"];
-      this.hasNext = data["hasNextPage"];
-      this.hasPrev = data["hasPrevPage"];
-      this.nextPage = data["nextPage"];
-      this.prevPage = data["prevPage"];
-      this.currentPage = data["page"];
-      this.totalDocs = data["totalDocs"]
+      this.setAppointmentData(data)
       console.log(data)
+    })
+  }
+
+  getNewAppointments(){
+    this.appointmentService.fetchAllUnseenAppointments().subscribe(data=>{
+      this.setAppointmentData(data)
+      console.log(data)
+    })
+  }
+
+  getResolvedAppointments(){
+    this.appointmentService.fetchAllResolvedAppointments().subscribe(data=>{
+      this.setAppointmentData(data)
+      console.log(data)
+    }, err=>{
+        this.appointments = undefined
+        this.msg = "Resolved Appointment Not Found"
+
     })
   }
 
@@ -44,6 +57,19 @@ export class AppointmentListComponent implements OnInit {
    this.allAppointments()
   }
 
+  setAppointmentData(data){
+    this.appointments = data["docs"];
+    this.hasNext = data["hasNextPage"];
+    this.hasPrev = data["hasPrevPage"];
+    this.nextPage = data["nextPage"];
+    this.prevPage = data["prevPage"];
+    this.currentPage = data["page"];
+    this.totalDocs = data["totalDocs"]
+  }
+
+  
+
+ 
   gotoTop() {
     
     window.scroll({

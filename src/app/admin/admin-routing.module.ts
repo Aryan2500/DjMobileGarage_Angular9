@@ -5,10 +5,12 @@ import { AppointmentListComponent } from './appointment-list/appointment-list.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
+
 const routes: Routes = [
   {path:'' , component: DashboardComponent},
   {path:'all-appointments' , component:AppointmentListComponent},
-  {path:'appointment-details/:id' ,component:AppointmentDetailsComponent}
+  {path:'appointment-details/:id' ,component:AppointmentDetailsComponent},
+ 
   
 ];
 

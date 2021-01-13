@@ -36,4 +36,14 @@ export class AdminAppointmentService {
     const url = this.baseUrl+'/appointment/reject/'+id
     return this.http.patch(url , {} , {headers:this.header})
   }
+
+  fetchAllUnseenAppointments(){
+    const url = this.baseUrl+'/appointments/unseen'
+    return this.http.get(url , {headers:this.header})
+  }
+
+  fetchAllResolvedAppointments(){
+    const url = this.baseUrl+'/appointments/repaired'
+    return this.http.get(url , {headers:this.header})
+  }
 }

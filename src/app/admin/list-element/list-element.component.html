@@ -1,0 +1,52 @@
+<div
+class="card text-white mb-4 shadow"
+*ngFor="let appointment of appointments"
+[ngClass]="{
+  'bg-success': appointment.isRepaired==true,
+  'bg-dark': appointment.isApproved==true && appointment.isRepaired==false,
+  'bg-info': appointment.isSeen==false,
+  'bg-danger': appointment.isApproved == false
+}"
+>
+<div class="card-header shade" *ngIf="appointment.isRepaired">
+  Repaired Successfuly <i class="fa fa-star" aria-hidden="true"></i>
+</div>
+<div class="card-header shade" *ngIf="!appointment.isRepaired && appointment.isApproved==true">Accepted But
+  Pending <i class="fa fa-hourglass-start" aria-hidden="true"></i>
+</div>
+<div class="card-header shade" *ngIf="appointment.isSeen==false">Unseen <i class="fa fa-eye-slash" aria-hidden="true"></i>
+</div>
+<div class="card-header shade" *ngIf="appointment.isApproved==false">Rejected <i class="fa fa-ban" aria-hidden="true"></i>
+</div>
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-9">
+      <h2 class="card-title shade">
+        <b>Appointment ID : {{ appointment.appointment_number }}</b>
+      </h2>
+      <p class="card-text shade">
+        Created On -
+        <i>{{
+          appointment.created_on | date: "dd-MMM-yy h:mm:ss a "
+        }}</i>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <!-- <i *ngIf="appointment.isRepaired"
+        class="fa fa-check shade"
+        [ngStyle]="{ 'font-size': '80px' }"
+        aria-hidden="true"
+      ></i>
+      <i *ngIf="!appointment.isRepaired"
+        class="fa fa-hourglass-half"
+        [ngStyle]="{ 'font-size': '80px' }"
+        aria-hidden="true"
+      ></i> -->
+      <a class="btn  box-shade btn-primary" [routerLink]="['/admin/appointment-details/',  appointment._id]" target="blank">
+        <i class="fa fa-info-circle" aria-hidden="true"></i> View
+        Details
+      </a>
+    </div>
+  </div>
+</div>
+</div>

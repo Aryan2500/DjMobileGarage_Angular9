@@ -3,69 +3,32 @@
     <div class="col-lg-2"></div>
     <div class="col-lg-8" *ngIf="appointments!=undefined; else msgForNoAppointment">
       <hr>
-      <h2 class="form-inline justify-content-center">
-        {{ heading }}
-        <form class=" my-2 my-lg-0 pl-4">
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-          />
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-            Search
-          </button>
+     
+      <div class="form-inline justify-content-around">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
-      </h2>
+
+       
+       
+          <label class="form-check-label">
+            <input type="radio"  name="optionsRadios" (change)="getNewAppointments()" id="optionsRadios2" value="option2">&nbsp;&nbsp; New Appointments
+          </label>
+       
+       
+          <label class="form-check-label">
+            <input type="radio"   name="optionsRadios" (change)="getResolvedAppointments()" id="optionsRadios3" value="option3" > Resolved Appointments
+          </label>
+        
+       
+      </div>
       <hr>
 
-      <div
-        class="card text-white mb-4 shadow"
-        *ngFor="let appointment of appointments"
-        [ngClass]="{
-          'bg-success': appointment.isRepaired,
-          'bg-dark': !appointment.isRepaired
-        }"
-      >
-        <div class="card-header shade" *ngIf="appointment.isRepaired">
-          Repaired Successfuly <i class="fa fa-star" aria-hidden="true"></i>
-        </div>
-        <div class="card-header shade" *ngIf="!appointment.isRepaired">
-          Pending <i class="fa fa-hourglass-start" aria-hidden="true"></i>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-9">
-              <h2 class="card-title shade">
-                <b>Appointment ID : {{ appointment.appointment_number }}</b>
-              </h2>
-              <p class="card-text shade">
-                Created On -
-                <i>{{
-                  appointment.created_on | date: "dd-MMM-yy h:mm:ss a "
-                }}</i>
-              </p>
-            </div>
-            <div class="col-md-3">
-              <!-- <i *ngIf="appointment.isRepaired"
-                class="fa fa-check shade"
-                [ngStyle]="{ 'font-size': '80px' }"
-                aria-hidden="true"
-              ></i>
-              <i *ngIf="!appointment.isRepaired"
-                class="fa fa-hourglass-half"
-                [ngStyle]="{ 'font-size': '80px' }"
-                aria-hidden="true"
-              ></i> -->
-              <a class="btn  box-shade btn-primary" [routerLink]="['/admin/appointment-details/', appointment._id]">
-                <i class="fa fa-info-circle" aria-hidden="true"></i> View
-                Details
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-list-element [appointments] = "appointments"></app-list-element>
+      
       <!-- pagination start -->
-      <div class="text-xs-center">
+      <div class="text-xs-center" *ngIf="currentPage !=null">
         <ul class="pagination pagination-lg justify-content-center">
           <li class="page-item" [ngClass]="{ disabled: !hasPrev }">
             <a
@@ -76,7 +39,7 @@
               >&laquo;</a
             >
           </li>
-          <li class="page-item active">
+          <li class="page-item active" >
             <a class="page-link">{{ currentPage }}</a>
           </li>
           <li class="page-item" [ngClass]="{ disabled: nextPage == null }">
@@ -92,16 +55,14 @@
       </div>
       <!-- pagination end -->
     </div>
-    <div class="col-lg-2"></div>
+
+    <div class="col-lg-2"> 
+           
+     </div>
+     
   </div>
 </div>
-<ng-template #msgForNoAppointment>
-  <h2>
-    You have not book any appointment so far .... <br />
-    <a [routerLink]="['/user/new-appointment']" class="btn btn-primary"
-      >Click Here</a
-    >
-    to Book your First Appointment
-  </h2>
+<ng-template #msgForNoAppointment >
+ <h2>{{msg}}</h2>&nbsp;&nbsp;<a class="btn btn-warning " (click)="allAppointments()" >Go Back</a>
 </ng-template>
 
