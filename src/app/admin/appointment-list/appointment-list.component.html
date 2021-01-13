@@ -5,6 +5,10 @@
       <hr>
      
       <div class="form-inline justify-content-around">
+        <div>
+         <a  class="btn" (click)="allAppointments()"> <i class="fa fa-chevron-left" aria-hidden="true" >Go Back</i></a>
+
+        </div>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
@@ -13,12 +17,12 @@
        
        
           <label class="form-check-label">
-            <input type="radio"  name="optionsRadios" (change)="getNewAppointments()" id="optionsRadios2" value="option2">&nbsp;&nbsp; New Appointments
+            <input type="radio"  name="optionsRadios"  [checked]="!NewResetRadioBtn"  (change)="getNewAppointments()" id="optionsRadios2" value="option2">&nbsp;&nbsp; New Appointments
           </label>
        
        
           <label class="form-check-label">
-            <input type="radio"   name="optionsRadios" (change)="getResolvedAppointments()" id="optionsRadios3" value="option3" > Resolved Appointments
+            <input type="radio" [checked]="!ResolvedResetRadioBtn"  name="optionsRadios" (change)="getResolvedAppointments()" id="optionsRadios3" value="option3" > Resolved Appointments
           </label>
         
        

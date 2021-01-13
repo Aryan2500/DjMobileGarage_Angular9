@@ -18,8 +18,9 @@ export class AppointmentListComponent implements OnInit {
   prevPage: any;
   totalDocs :any;
   msg: string;
+  NewResetRadioBtn :boolean
+  ResolvedResetRadioBtn:boolean
 
-  
   constructor(private appointmentService : AdminAppointmentService) { }
 
   ngOnInit(): void {
@@ -30,24 +31,30 @@ export class AppointmentListComponent implements OnInit {
   allAppointments(){
     this.appointmentService.fetchAllAppointments().subscribe((data)=>{
       this.setAppointmentData(data)
+     
       console.log(data)
     })
+    this.ResolvedResetRadioBtn = true
+    this.NewResetRadioBtn = true
   }
 
   getNewAppointments(){
     this.appointmentService.fetchAllUnseenAppointments().subscribe(data=>{
       this.setAppointmentData(data)
       console.log(data)
+      this.NewResetRadioBtn = false
     })
   }
 
   getResolvedAppointments(){
     this.appointmentService.fetchAllResolvedAppointments().subscribe(data=>{
       this.setAppointmentData(data)
+      this.ResolvedResetRadioBtn = false
       console.log(data)
     }, err=>{
         this.appointments = undefined
         this.msg = "Resolved Appointment Not Found"
+        this.ResolvedResetRadioBtn = false
 
     })
   }
