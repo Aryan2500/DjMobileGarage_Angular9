@@ -20,7 +20,7 @@ export class AppointmentListComponent implements OnInit {
   msg: string;
   NewResetRadioBtn :boolean
   ResolvedResetRadioBtn:boolean
-
+  PendingResetRadioBtn:boolean
   constructor(private appointmentService : AdminAppointmentService) { }
 
   ngOnInit(): void {
@@ -36,6 +36,14 @@ export class AppointmentListComponent implements OnInit {
     })
     this.ResolvedResetRadioBtn = true
     this.NewResetRadioBtn = true
+    this.PendingResetRadioBtn = true
+  }
+
+  getPendingAppointment(){
+    this.appointmentService.fetchPendingAppointments().subscribe(data=>{
+      this.setAppointmentData(data)
+      this.PendingResetRadioBtn = false
+    })
   }
 
   getNewAppointments(){

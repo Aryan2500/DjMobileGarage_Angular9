@@ -46,4 +46,9 @@ export class AdminAppointmentService {
     const url = this.baseUrl+'/appointments/repaired'
     return this.http.get(url , {headers:this.header})
   }
+
+  fetchPendingAppointments(){
+    const url = this.baseUrl+'/appointments/pending'
+    return this.http.get(url, {headers:this.header})
+  }
 }
