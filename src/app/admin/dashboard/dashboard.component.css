@@ -27,9 +27,17 @@
     background-color: #66bb6a;
     color: #FFF;
   }  
+  .card-counter.warning{
+    background-color: orange;
+    color: #FFF;
+  }  
 
   .card-counter.info{
-    background-color: #26c6da;
+    background-color: purple;
+    color: #FFF;
+  }  
+  .card-counter.new{
+    background-color:hotpink;
     color: #FFF;
   }  
 
