@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule} from '@angular/forms'
 import { AdminRoutingModule } from './admin-routing.module';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -13,7 +13,8 @@ import { ListElementComponent } from './list-element/list-element.component';
   declarations: [AppointmentListComponent, DashboardComponent, AppointmentDetailsComponent, ListElementComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }
