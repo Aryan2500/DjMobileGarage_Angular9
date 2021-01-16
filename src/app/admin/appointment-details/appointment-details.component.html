@@ -70,7 +70,7 @@
         </div>
 
       </div>
-      <div class="row pt-4 text-center">
+      <div class="row pt-4 text-center" *ngIf="!details.isRepaired">
         <div class="col-sm-6 ">
         
          
@@ -85,6 +85,9 @@
                 <i class="fa fa-ban" aria-hidden="true"></i> REJECT
               </button>
         </div>
+      </div>
+      <div class="row border mt-4 p-4 box-shade bg-info justify-content-center" *ngIf="details.isRepaired">
+        <h1 class="appoint-number-color">Repaired Successfuly</h1> 
       </div>
     </div>
     <div class="col-lg-5  pt-4">
