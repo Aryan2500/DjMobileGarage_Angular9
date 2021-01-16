@@ -4,6 +4,7 @@
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
       <form
+     
         autocomplete="off"
         [formGroup]="appointForm"
         (submit)="create_Appointment(appointForm)"
@@ -177,10 +178,11 @@
         <div class="form-group">
           <label for="exampleInputFile">Upload Image</label>
           <input
+          name="problem_Image"
             type="file"
-            formControlName="problem_Image"
             class="form-control-file"
             id="exampleInputFile"
+            (change)="onFileSelected($event)"
           />
           <small id="fileHelp" class="form-text text-muted"
             >upload image of your phone (optional)</small
