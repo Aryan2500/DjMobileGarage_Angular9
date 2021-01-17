@@ -5,8 +5,10 @@ import { LoginComponent } from "./auth/login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { SignInGuard } from "./guards/sign-in.guard";
 import { AdminLayoutComponent } from "./layout/admin-layout/admin-layout.component";
+import { CommonLayoutComponent } from "./layout/common-layout/common-layout.component";
 import { ADMIN_ROUTES } from "./routes/admin-layout-route";
-import { HomeComponent } from "./user/dashboard/home/home.component";
+import { DEFAULT_ROUTES } from "./routes/default-layout-routes";
+import { USER_ROUTES } from "./routes/user-route";
 
 const routes: Routes = [
   {
@@ -26,12 +28,14 @@ const routes: Routes = [
   },
   {
     path: "user",
-    loadChildren: () => import("./user/user.module").then((m) => m.UserModule),
-    canLoad: [AuthGuard],
+    component:CommonLayoutComponent,
+    children:USER_ROUTES,
   },
+
   {
     path:'',
-    component:HomeComponent
+    component:CommonLayoutComponent,
+    children:DEFAULT_ROUTES
   }
 ];
 

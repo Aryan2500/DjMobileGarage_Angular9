@@ -5,7 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 
 import { NavigationBarComponent } from '../share-module/navigation-bar/navigation-bar.component';
 import { ShareModuleModule } from '../share-module/share-module.module';
-import { HomeComponent } from './dashboard/home/home.component';
+
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { CreateAppointmentComponent } from './dashboard/create-appointment/create-appointment.component';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms'
@@ -17,7 +17,7 @@ import { ListAppointmentComponent } from './dashboard/list-appointment/list-appo
 
 
 @NgModule({
-  declarations: [ NavigationBarComponent, HomeComponent, ProfileComponent,  CreateAppointmentComponent ,DatepickerDirective, ListAppointmentComponent],
+  declarations: [   ProfileComponent,  CreateAppointmentComponent ,DatepickerDirective, ListAppointmentComponent],
   imports: [
     CommonModule,
     FormsModule,

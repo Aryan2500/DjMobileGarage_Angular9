@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient , HttpHeaders} from '@angular/common/http'
+import { HttpClient} from '@angular/common/http'
 import { GlobalConstants } from '../common/global_constant';
 @Injectable({
   providedIn: 'root'
 })
 export class AdminDataCountService {
 
-  private header: HttpHeaders
+  
   private baseUrl: string;
 
   constructor( private httpClient : HttpClient) { 
-    this.header = new HttpHeaders()
+    
     this.baseUrl = GlobalConstants.apiBaseURL + '/admin'
 
   }

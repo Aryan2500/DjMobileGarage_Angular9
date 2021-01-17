@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { RouterModule } from '@angular/router';
 
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, ],
+  declarations: [HomeComponent,NavigationBarComponent ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ], 
- exports:[HomeComponent ,  ]
+ exports:[HomeComponent , NavigationBarComponent ]
 })
 export class ShareModuleModule { }

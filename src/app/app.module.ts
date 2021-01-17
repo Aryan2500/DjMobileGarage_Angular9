@@ -13,6 +13,8 @@ import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.compone
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import {ReactiveFormsModule} from '@angular/forms'
 import { SpinnerInterceptor } from './spinner.interceptor';
+import { CommonLayoutComponent } from './layout/common-layout/common-layout.component';
+import { ShareModuleModule } from './share-module/share-module.module';
 
 // import { HttpClientModule} from "@angular/common/http"
 // import { AuthServiceService } from './auth/auth-service.service';
@@ -22,7 +24,8 @@ import { SpinnerInterceptor } from './spinner.interceptor';
     AppComponent,
     SpinnerComponent,
     AdminLayoutComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    CommonLayoutComponent
     
    
     
@@ -33,7 +36,8 @@ import { SpinnerInterceptor } from './spinner.interceptor';
     AuthModule,
     UserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShareModuleModule
     // HttpClientModule
   ],
   providers: [

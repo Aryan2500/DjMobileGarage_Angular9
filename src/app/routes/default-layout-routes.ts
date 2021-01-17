@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router'
+import { HomeComponent } from '../share-module/home/home.component'
 
 export const DEFAULT_ROUTES : Routes = [
-    {path:'' , loadChildren:()=>import('../user/user.module').then(m=>m.UserModule)},
+    {path:'' , component:HomeComponent},
     
 ]
