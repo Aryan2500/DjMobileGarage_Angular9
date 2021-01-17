@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AdminAppointmentService } from "src/app/services/admin-appointment.service";
 import { Form } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-appointment-list",
   templateUrl: "./appointment-list.component.html",
@@ -22,15 +23,15 @@ export class AppointmentListComponent implements OnInit {
   PendingResetRadioBtn: boolean;
   form: any;
 
-  constructor(private appointmentService: AdminAppointmentService) {}
+  constructor(private appointmentService: AdminAppointmentService , private route:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.heading = "All Appointments";
-    this.allAppointments();
+    this.allAppointments(1);
   }
 
-  allAppointments() {
-    this.appointmentService.fetchAllAppointments().subscribe((data) => {
+  allAppointments(page) {
+    this.appointmentService.fetchAllAppointments(page).subscribe((data) => {
       this.setAppointmentData(data);
       if(this.form!=undefined){
         this.form.resetForm()
@@ -42,23 +43,23 @@ export class AppointmentListComponent implements OnInit {
     this.PendingResetRadioBtn = true;
   }
 
-  getPendingAppointment() {
-    this.appointmentService.fetchPendingAppointments().subscribe((data) => {
+  getPendingAppointment(page) {
+    this.appointmentService.fetchPendingAppointments(page).subscribe((data) => {
       this.setAppointmentData(data);
       this.PendingResetRadioBtn = false;
     });
   }
 
-  getNewAppointments() {
-    this.appointmentService.fetchAllUnseenAppointments().subscribe((data) => {
+  getNewAppointments(page) {
+    this.appointmentService.fetchAllUnseenAppointments(page).subscribe((data) => {
       this.setAppointmentData(data);
       console.log(data);
       this.NewResetRadioBtn = false;
     });
   }
 
-  getResolvedAppointments() {
-    this.appointmentService.fetchAllResolvedAppointments().subscribe(
+  getResolvedAppointments(page) {
+    this.appointmentService.fetchAllResolvedAppointments(page).subscribe(
       (data) => {
         this.setAppointmentData(data);
         this.ResolvedResetRadioBtn = false;
@@ -82,8 +83,8 @@ export class AppointmentListComponent implements OnInit {
     const text = this.form.value.text;
         
     if  ( text=='' || text == null || text ==undefined)  {
-      // this.allAppointments()
-      console.log(text);
+      this.allAppointments(1)
+      // console.log(text);
       return;
     }
 
@@ -101,7 +102,18 @@ export class AppointmentListComponent implements OnInit {
 
   getNextPageOrPrevPage(pageNumber) {
     this.gotoTop();
-    this.allAppointments();
+    if(this.ResolvedResetRadioBtn===false){
+      this.getResolvedAppointments(pageNumber)
+    }
+    else if(this.PendingResetRadioBtn === false){
+      this.getPendingAppointment(pageNumber)
+    }
+    else if(this.NewResetRadioBtn === false){
+      this.getNewAppointments(pageNumber)
+    }else{
+      this.allAppointments(pageNumber);
+    }
+    
   }
 
   setAppointmentData(data) {

@@ -6,6 +6,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { SignInGuard } from "./guards/sign-in.guard";
 import { AdminLayoutComponent } from "./layout/admin-layout/admin-layout.component";
 import { ADMIN_ROUTES } from "./routes/admin-layout-route";
+import { HomeComponent } from "./user/dashboard/home/home.component";
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import("./user/user.module").then((m) => m.UserModule),
     canLoad: [AuthGuard],
   },
+  {
+    path:'',
+    component:HomeComponent
+  }
 ];
 
 @NgModule({

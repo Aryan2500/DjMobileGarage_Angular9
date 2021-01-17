@@ -42,9 +42,10 @@
         </li>
       </ul>
        
-      <a *ngIf="isLogin"  class="nav-link" title="Logout" routerLink="/login" (click)="logout()"
+      <a *ngIf="isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'20px'}" title="Logout" routerLink="/login" (click)="logout()"
         ><i class="fas fa-sign-out-alt"></i
-      ></a>
-      <a *ngIf="!isLogin"  class="nav-link" title="Login" routerLink="/login" ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+      >&nbsp; Logout</a>
+      <a *ngIf="!isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'15px'}" title="Login" routerLink="/login" ><i class="fa fa-sign-in-alt" aria-hidden="true"></i>
+        Login</a>
     </div>
   </nav>

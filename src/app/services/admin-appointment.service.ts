@@ -8,6 +8,7 @@ export class AdminAppointmentService {
 
   private header: HttpHeaders
   private baseUrl: string;
+
   constructor( private http : HttpClient) { 
     this.header = new HttpHeaders()
     this.baseUrl = GlobalConstants.apiBaseURL + '/admin'
@@ -15,8 +16,8 @@ export class AdminAppointmentService {
 
   }
 
-  fetchAllAppointments(){
-    const url = this.baseUrl + '/appointments'
+  fetchAllAppointments(page=1){
+    const url = this.baseUrl + '/appointments?page='+page
 
     return this.http.get(url , {headers: this.header})
   }
@@ -37,23 +38,23 @@ export class AdminAppointmentService {
     return this.http.patch(url , {} , {headers:this.header})
   }
 
-  fetchAllUnseenAppointments(){
-    const url = this.baseUrl+'/appointments/unseen'
+  fetchAllUnseenAppointments(page=1){
+    const url = this.baseUrl+'/appointments/unseen?page='+page
     return this.http.get(url , {headers:this.header})
   }
 
-  fetchAllResolvedAppointments(){
-    const url = this.baseUrl+'/appointments/repaired'
+  fetchAllResolvedAppointments(page=1){
+    const url = this.baseUrl+'/appointments/repaired?page='+page
     return this.http.get(url , {headers:this.header})
   }
 
-  fetchPendingAppointments(){
-    const url = this.baseUrl+'/appointments/pending'
+  fetchPendingAppointments(page=1){
+    const url = this.baseUrl+'/appointments/pending?page='+page
     return this.http.get(url, {headers:this.header})
   }
 
-  fetchSearchAppointment(text){
-    const url = this.baseUrl + '/appointments/search/'+text
+  fetchSearchAppointment(text ,page=1){
+    const url = this.baseUrl + '/appointments/search/'+text+'?page='+page
     return this.http.get(url , {headers:this.header})
   }
 }
