@@ -12,6 +12,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import {ReactiveFormsModule} from '@angular/forms'
+import { SpinnerInterceptor } from './spinner.interceptor';
 
 // import { HttpClientModule} from "@angular/common/http"
 // import { AuthServiceService } from './auth/auth-service.service';
@@ -40,6 +41,11 @@ import {ReactiveFormsModule} from '@angular/forms'
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:SpinnerInterceptor,
+      multi:true
     }
   ],
   bootstrap: [AppComponent],
