@@ -83,11 +83,7 @@ export class CreateAppointmentComponent implements OnInit {
     //   phone: appointForm.value.user_Phone,
     // };
     // console.log(appointmentData);
-    fd.forEach((value, key) => {                                                                                                                             
-      console.log("key (%s): value (%s)", key, value);                                                                                                           
-   })
-    console.log(fd)
-    
+       
     this.appointmentService
       .postAppointment(fd)
       .subscribe((data) => {

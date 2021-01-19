@@ -11,7 +11,8 @@ import { AdminAppointmentService } from 'src/app/services/admin-appointment.serv
 export class AppointmentDetailsComponent implements OnInit {
   details: any;
   apiBaseUrl = GlobalConstants.apiBaseURL
-
+  cost :any
+  msg: string;
   constructor( private router : ActivatedRoute , private appointService : AdminAppointmentService) {
     
    }
@@ -32,9 +33,28 @@ export class AppointmentDetailsComponent implements OnInit {
     this.details = data
   }
 
+  repairCost(){
+    if(this.cost <= 0){
+      this.msg = " repairing cost below or equal to zero will not be saved !"
+      return false
+    } else if(this.cost<100){
+      this.msg = "repairing cost is too low "
+      return true
+    }else{
+      this.msg=undefined
+      return true
+    }
+
+  }
   acceptAppointment(id){
-    this.appointService.setAppointmentAccepted(id).subscribe(data=>{
-      // console.log(data)
+    let price = null
+    if(this.cost!=undefined){
+      if(this.repairCost()){
+        price = this.cost
+      }
+    }
+    this.appointService.setAppointmentAccepted(id , price).subscribe(data=>{
+      //  console.log(data)
       this.getAppointmentDetail()
 
     })

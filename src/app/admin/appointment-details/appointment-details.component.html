@@ -1,5 +1,5 @@
 <div class="container p-4" *ngIf="details!=undefined" >
-    <div class="row pl-4 pr-4 justify-content-center">
+    <div class="row justify-content-center">
       <h2 class="appointment_title " style="letter-spacing: 8px;" >{{details.appointment_number}}</h2>
     
     </div>
@@ -64,27 +64,56 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-          <div *ngIf="details.problem_Image==null">
+          <div  *ngIf="details.problem_Image==null">
                 <img class="img-fluid" src="../../../assets/image-not-found.png" height="500" alt="Image not found">
           </div>
         </div>
 
       </div>
       <div class="row pt-4 text-center" *ngIf="!details.isRepaired">
-        <div class="col-sm-6 ">
-        
-         
-          <button class="icon-size btn box-shade btn-success" (click)="acceptAppointment(details._id)" [disabled]=" details.isApproved==true">
-            <i class="fa fa-check-circle" aria-hidden="true"></i> ACCEPT
-          </button>
-        
+        <div class="col-sm-12">
+
+         <div id="cost_Box" *ngIf="!details.isApproved">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group has-success">                
+                <input type="number" maxlength="3" (keyup)="repairCost()" [(ngModel)]="cost" value="{{cost}}" class="form-control " id="inputValid" placeholder="Enter Repairing Cost in &#8377;" >
+                <small class="err-msg" *ngIf="msg!=undefined">{{msg}}</small>
+                 
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="row" *ngIf="cost!=undefined" >
+            <div class="col-sm-12">
+              <h3 class=" p-4 bg-danger appoint-number-color">{{ cost}} &#8377;</h3>
+            </div>
+          </div>
+
+         </div>
+
+         <div class="row" *ngIf="details.repairing_cost!=null && details.isApproved"  >
+          <div class="col-sm-12">
+            <h3 class=" p-4 bg-danger appoint-number-color">{{details.repairing_cost}} &#8377;</h3>
+          </div>
         </div>
-        <div class="col-sm-6">
-           
-            <button class="btn icon-size box-shade btn-danger" (click)="rejectAppointment(details._id)" [disabled]="details.isApproved==false">
-                <i class="fa fa-ban" aria-hidden="true"></i> REJECT
+
+          <div class="row">
+            <div class="col-sm-6 ">         
+              <button class="icon-size btn box-shade btn-success" (click)="acceptAppointment(details._id)" [disabled]=" details.isApproved==true">
+                <i class="fa fa-check-circle" aria-hidden="true"></i> ACCEPT
               </button>
+            </div>
+
+            <div class="col-sm-6">
+                <button class="btn icon-size box-shade btn-danger" (click)="rejectAppointment(details._id)" [disabled]="details.isApproved==false">
+                    <i class="fa fa-ban" aria-hidden="true"></i> REJECT
+                  </button>
+            </div>
+          </div>
         </div>
+        
       </div>
       <div class="row border mt-4 p-4 box-shade bg-info justify-content-center" *ngIf="details.isRepaired">
         <h1 class="appoint-number-color">Repaired Successfuly</h1> 
@@ -104,6 +133,7 @@
         <h1 class="appoint-number-color">PickUp Date : {{details.pickup_Date}}</h1> 
         <h1 class="appoint-number-color"> PickUp Time : {{details.pickup_Time}}</h1>
         <h2 class="appoint-number-color"> Address : {{details.user_Address}}</h2>
+        <h2 class="appoint-number-color"> Phone : {{details.user_Phone}}</h2>
       </div>
     </div>
   </div>

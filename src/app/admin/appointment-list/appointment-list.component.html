@@ -10,17 +10,18 @@
                 <i class="fa fa-chevron-left" aria-hidden="true">Go Back</i></a
               >
 
-              <form class="form-inline my-2 my-lg-0" #searchForm = "ngForm" (keyup)="searchAppointment(searchForm)" (submit)="searchAppointment(searchForm)">
+              <form class="form-inline my-2 my-lg-0" #searchForm = "ngForm" (keyup)="searchAppointment(searchForm)" (submit)="searchButtonPressed(searchForm)">
                 <input
                   class="form-control mr-sm-2"
                   type="number"
+                  required
                   placeholder="Enter Last 8 Digits"
                   aria-label="Search" 
                   maxlength="8"
                   ngModel
                  name="text"
                 />
-                <button class="btn btn-secondary my-2 my-sm-0"  type="submit">Search</button>
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
              
               </form>
             <!-- </div> -->

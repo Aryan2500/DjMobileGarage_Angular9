@@ -27,9 +27,9 @@ export class AdminAppointmentService {
     return this.http.get(url , {headers:this.header})
   }
 
-  setAppointmentAccepted(id){
+  setAppointmentAccepted(id , price){
     const url = this.baseUrl+'/appointment/approve/'+id
-    return this.http.patch(url , {} , {headers:this.header})
+    return this.http.patch(url, {repairing_cost:price}, {headers:this.header})
 
   }
 

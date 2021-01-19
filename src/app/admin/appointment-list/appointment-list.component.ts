@@ -81,10 +81,12 @@ export class AppointmentListComponent implements OnInit {
     this.form = forms;
     
     const text = this.form.value.text;
-        
-    if  ( text=='' || text == null || text ==undefined)  {
+    
+    
+
+    if  ( text==='' ||text === null|| text ===undefined )  {
       this.allAppointments(1)
-      // console.log(text);
+      console.log(text);
       return;
     }
 
@@ -98,6 +100,16 @@ export class AppointmentListComponent implements OnInit {
         this.msg = "Appointment You are searching not Found";
       }
     );
+  }
+
+  searchButtonPressed(forms){
+    this.form = forms;
+    const text = this.form.value.text;
+    if  ( text==='' ||text === null|| text ===undefined)  {
+      return;
+    }else{
+      this.searchAppointment(forms)
+    }
   }
 
   getNextPageOrPrevPage(pageNumber) {
