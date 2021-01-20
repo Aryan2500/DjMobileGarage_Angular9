@@ -47,5 +47,8 @@
       >&nbsp; Logout</a>
       <a *ngIf="!isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'15px'}" title="Login" routerLink="/login" ><i class="fa fa-sign-in-alt" aria-hidden="true"></i>
         Login</a>
+      <a *ngIf="!isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'10px'}" title="Login" routerLink="/admin-login" ><i class="fa fa-user-secret" aria-hidden="true"></i>
+
+        Admin</a>
     </div>
   </nav>

@@ -9,6 +9,7 @@ import {
   } from "@angular/forms";
 import { AuthServiceService } from "./auth-service.service";
 import { RegisterComponent } from './register/register.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -16,7 +17,8 @@ import { RegisterComponent } from './register/register.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
    
   ],
   providers:[AuthServiceService],

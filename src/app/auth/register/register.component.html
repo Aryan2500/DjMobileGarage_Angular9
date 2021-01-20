@@ -1,7 +1,7 @@
 <div class="container mt-4 justify-content-center">
   <div *ngIf="data != undefined" class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Well done!</strong> You have successfully created you account  <a href="/login" class="alert-link">click here </a> to login.
+    <strong>Well done!</strong> You have successfully created you account  <a [routerLink]="['/login']" class="alert-link">click here </a> to login.
   </div>
   <div class="row">
     
