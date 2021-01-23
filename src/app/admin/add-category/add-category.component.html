@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-md-8">
+      <form #form="ngForm" (submit)="addCategory(form)">
+        <div class="form-group has-success">
+          <label class="form-control-label" for="inputValid"
+            ><i class="fa fa-plus" aria-hidden="true"></i> Add Category</label
+          ><br />
+          <input
+            type="text"
+            required
+            minlength="4"
+            name="name"
+            placeholder="Category Name"
+            class="form-control"
+            id="inputValid"
+            ngModel
+          />
+          <div
+            class="err-msg"
+            *ngIf="form.touched && form.value.name.length < 4"
+          >
+            * atleast 4 character required !
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+          Save 
+        </button>
+      </form>
+      <hr />
+      <br /><br />
+      
+      <h2 class="text-center">Category List</h2>
+      <div *ngIf="category_list">
+         
+        <table class="table table-hover text-center" >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let category  of category_list;  index as i">
+              <td>{{i+1}}</td>
+              <td>{{category.name}}</td>
+              <td>
+                  <button title="Delete" (click)="deleteCategory(category._id)" style="border: none;font-size: 25px;background: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;&nbsp;
+                  <button title="Edit" (click)="setDataForEdit(category._id , category.name, editForm)" style="border: none;font-size: 25px;background: none;"><i class="fa fa-paint-brush" aria-hidden="true"></i></button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+
+       
+      </div>
+      <div *ngIf="category_list===null" class="text-center">
+        <h2>No Category found</h2>
+    </div>
+    <!-- =============================Modal============================ -->
+    <!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Category</h5>
+        </div>
+        <div class="modal-body">
+            <form #editForm="ngForm" (submit)="editCategory(editForm)">
+                <div class="form-group has-success">
+                  <br />
+                  <input type="hidden" name="id" ngModel >
+
+                  <input
+                    type="text"
+                    required
+                    minlength="4"
+                    name="name"
+                    placeholder="Category Name"
+                    class="form-control"
+                    id="inputValid"
+                    ngModel
+                  />
+                  <div
+                    class="err-msg"
+                    *ngIf="editForm.touched && editForm.value.name.length < 4"
+                  >
+                    * atleast 4 character required !
+                  </div>
+                  <p *ngIf="status" class="text-success">Category Updated</p>
+                </div>
+                <button type="submit" class="btn btn-primary"    [disabled]="!editForm.valid">
+                  Change
+                </button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-secondary" [routerLink]="['/admin/add-category']" data-dismiss="modal">Close</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>
+

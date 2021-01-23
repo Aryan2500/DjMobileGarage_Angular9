@@ -70,20 +70,7 @@ export class CreateAppointmentComponent implements OnInit {
     fd.append('phone', appointForm.get('user_Phone').value)
     fd.append('address', appointForm.get('user_Address').value)
     fd.append('image', appointForm.get('problem_Image').value)
-
-    // const appointmentData = {
-    //   title: appointForm.value.problem_Title,
-    //   description: appointForm.value.problem_Description,
-     
-    //   // image: appointForm.value.problem_Image,
-    //   pick_up_date: appointForm.value.pickup_Date,
-    //   pick_up_time:
-    //     appointForm.value.pickup_Time + " " + appointForm.value.meridian,
-    //   address: appointForm.value.user_Address,
-    //   phone: appointForm.value.user_Phone,
-    // };
-    // console.log(appointmentData);
-       
+    
     this.appointmentService
       .postAppointment(fd)
       .subscribe((data) => {

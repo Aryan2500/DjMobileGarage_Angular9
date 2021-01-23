@@ -6,11 +6,13 @@ import { AppointmentListComponent } from './appointment-list/appointment-list.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 import { ListElementComponent } from './list-element/list-element.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 
 
 @NgModule({
-  declarations: [AppointmentListComponent, DashboardComponent, AppointmentDetailsComponent, ListElementComponent],
+  declarations: [AppointmentListComponent, DashboardComponent, AppointmentDetailsComponent, ListElementComponent, AddProductComponent, AddCategoryComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

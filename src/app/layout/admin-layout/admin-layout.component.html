@@ -8,16 +8,12 @@
         <div class="sidebar-brand">
           <a [routerLink]="['/admin/']" [routerLinkActive]="['active']">Dj Mobile Garage</a></div></div>
         <li class="dropdown">
-        <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Appointments<span class="caret"></span></a>
-      <ul class="dropdown-menu animated fadeInLeft" role="menu">
+       
       
        <li><a [routerLink]="['/admin/all-appointments/']" [routerLinkActive]="['active']"> <i class="fa fa-list"></i> All Appointments</a></li>
-       <li><a [routerLink]="['/admin/new-appointments']"> <i class="fa fa-star"></i> New Appointments</a></li>
-       <li><a [routerLink]="['/admin/pending-appointments']"> <i class="fa fa-hourglass-start"></i> Pending Appointments</a></li>
-      
-      </ul>
-       </li>
-       <li><a href="#services">Services</a></li>
+       <li><a [routerLink]="['/admin/add-product']"> <i class="fa fa-star"></i> Add Product</a></li>
+       <li><a [routerLink]="['/admin/pending-appointments']"> <i class="fa fa-hourglass-start"></i> Edit Product</a></li>     
+       <li><a [routerLink]="['/admin/add-category']"> <i class="fa fa-hourglass-start"></i> Add Category</a></li>
        <li><a href="#contact">Contact</a></li>
        <li><a href="#followme">Follow me</a></li>
        </ul>
