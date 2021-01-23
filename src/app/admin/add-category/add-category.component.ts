@@ -25,6 +25,7 @@ export class AddCategoryComponent implements OnInit {
     this.categoryService.postCategory(formData).subscribe(data=>{
       console.log(data)
       this.getAllCategory()
+      form.reset()
     })
   }
 
@@ -64,6 +65,9 @@ export class AddCategoryComponent implements OnInit {
       this.status = data['updated']
       if(this.status){
          this.getAllCategory()
+         setTimeout(()=>{
+            this.status = false
+         },2000)
       }
     })
   }
