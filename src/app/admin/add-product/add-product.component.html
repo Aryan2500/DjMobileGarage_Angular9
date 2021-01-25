@@ -1,95 +1,152 @@
 <div class="container">
-    <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-md-8">
-            <form>
-                <fieldset>
-                  <legend><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;
-                     Add Product</legend><br>
-                 
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelect1">Example select</label>
-                    <select class="form-control" id="exampleSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelect2">Example multiple select</label>
-                    <select multiple="" class="form-control" id="exampleSelect2">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleTextarea">Example textarea</label>
-                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-                  </div>
-                  <fieldset class="form-group">
-                    <legend>Radio buttons</legend>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                        Option one is this and that—be sure to include why it's great
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                      </label>
-                    </div>
-                    <div class="form-check disabled">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-                        Option three is disabled
-                      </label>
-                    </div>
-                  </fieldset>
-                  <fieldset class="form-group">
-                    <legend>Checkboxes</legend>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked="">
-                        Option one is this and that—be sure to include why it's great
-                      </label>
-                    </div>
-                    <div class="form-check disabled">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" disabled="">
-                        Option two is disabled
-                      </label>
-                    </div>
-                  </fieldset>
-                  <fieldset class="form-group">
-                    <legend>Sliders</legend>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" class="custom-range" id="customRange1">
-                  </fieldset>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </fieldset>
-              </form>
-        </div>
-        <div class="col-lg-2"></div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-md-8">
+      <form [formGroup]="productForm" (submit)="saveProduct(productForm)" *ngIf="catList">
+        <fieldset>
+          <legend>
+            <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add Product
+          </legend>
+          <br />
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter Product Name"
+              formControlName="name"
+            />
+            <small
+              class="form-text text-muted err-msg"
+              *ngIf="
+                productForm.get('name').touched &&
+                productForm.get('name').hasError('required')
+              "
+              >* product name is required </small
+            >
+          </div>
+          <div class="form-group">
+            <label for="name">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              aria-describedby="emailHelp"
+              placeholder="Enter Product Price"
+              formControlName="price"
+            />
+            <small
+              class="form-text text-muted err-msg"
+              *ngIf="
+                productForm.get('price').touched &&
+                productForm.get('price').hasError('required')
+              "
+              >* product price is required and only number should be entered</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="exampleSelect1">Select Category</label>
+            <select class="form-control" formControlName="category">
+              <option value="" [selected] disabled>Select Category</option>
+              <option *ngFor="let cat of catList" value="{{ cat._id }}">
+                {{ cat.name }}
+              </option>
+            </select>
+            <small
+            
+            class="form-text text-muted err-msg"
+            *ngIf="
+              productForm.get('category').touched &&
+              productForm.get('category').hasError('required')
+            "
+            >* category is required</small
+          >
+          </div>
+
+          <div class="form-group">
+            <label for="exampleSelect1">Short Description</label>
+            <textarea
+              class="form-control"
+              formControlName="description"
+              id="exampleTextarea2"
+              rows="3"
+            ></textarea>
+            <small
+              id="fileHelp"
+              class="form-text text-muted err-msg"
+              *ngIf="
+                productForm.get('description').touched &&
+                productForm.get('description').hasError('required')
+              "
+              >* short description is required</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input
+              type="file"
+              class="form-control-file"
+              name="image"
+              
+              (change)="onFileSelected($event)"
+            />
+            <small id="fileHelp" class="form-text text-muted"
+              >you can upload product image from here</small
+            >
+          </div>
+
+          <fieldset class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  checked=""
+                  formControlName="isAvailable"
+                />
+                Product is Available
+              </label>
+            </div>
+          </fieldset>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!productForm.valid"
+          >
+            Submit
+          </button>
+        </fieldset>
+      </form>
+
+      <div *ngIf="catList===undefined">
+        <h3>No Category found to create product , Kindly create category first !</h3>
+      </div>
+
+          <!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle" aria-hidden="true"></i>Product Created</h5>
+      </div>
+      <div class="modal-body bg-success">
+           <h4 [ngStyle]="{'color':'white'}">Product Created Successfuly</h4>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" [routerLink]="['/admin/add-product']" data-dismiss="modal">Close</a>
+        
+      </div>
     </div>
+  </div>
+</div>
+
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
 </div>

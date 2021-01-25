@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule} from '@angular/forms'
+import { FormsModule , ReactiveFormsModule} from '@angular/forms'
 import { AdminRoutingModule } from './admin-routing.module';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,7 +16,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
