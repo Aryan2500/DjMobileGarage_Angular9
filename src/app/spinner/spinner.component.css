@@ -28,7 +28,7 @@
     position: fixed;
     top: 40%;
     left: calc(50% - 10%);
-    z-index: 100;
+    z-index: 10000;
     background-image: url("../../assets/bee.png");
     background-repeat: no-repeat;
     background-size: 97%;

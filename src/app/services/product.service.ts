@@ -18,4 +18,25 @@ export class ProductService {
      
     return this.httpClient.post(this.baseUrl  , data , {headers:this.header})
   }
+
+  fetchProductList(){
+    const url = GlobalConstants.apiBaseURL+'/products'
+    return this.httpClient.get(url , {headers:this.header})
+  }
+
+  getSingleProduct(id ){
+    const url = this.baseUrl +'/'+id
+    return this.httpClient.get(url   , {headers:this.header})
+  }
+
+  updateProduct(id , data){
+    const url = this.baseUrl +'/'+id
+    return this.httpClient.put(url , data , {headers:this.header})
+
+  }
+
+  deleteProduct(id){
+    const url = this.baseUrl + '/'+id
+    return this.httpClient.delete(url , {headers:this.header})
+  }
 }

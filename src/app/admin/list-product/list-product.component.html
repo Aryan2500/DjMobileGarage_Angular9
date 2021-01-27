@@ -1,0 +1,252 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8" >
+      <div *ngIf="totalDocs > 0">
+        <h3 class="text-center p-3">Product List</h3>
+        <div
+          class="row shadow p-3 mb-5 bg-white rounded"
+          *ngFor="let prod of products"
+        >
+          <div
+            class="col-sm-3 d-flex align-items-center justify-content-center"
+          >
+            <img
+              *ngIf="prod.image != null"
+              src="{{ apiBaseUrl }}/uploads/products/{{ prod.image }}"
+              alt=" {{ prod.image }} not found"
+              class="img-fluid"
+            />
+            <img
+              src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg "
+              alt=" {{ prod.image }} not found"
+              *ngIf="prod.image === null"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-sm-9">
+                <h3>{{ prod.name }}</h3>
+                <p>
+                  {{ prod.description }}
+                </p>
+              </div>
+
+              <div
+                class="col-sm-3 d-flex align-items-center justify-content-center"
+              >
+                <div class="col-sm-1">
+                  <small>Price {{ prod.price }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 d-flex justify-content-center">
+                <button
+                  title="Edit Item"
+                  style="border: none; background: none; font-size: 20px"
+                >
+                  <i
+                    class="fa fa-paint-brush"
+                    style="color: blue"
+                    (click)="popUpModal(prod._id, productForm)"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+              </div>
+              <div class="col-6 d-flex justify-content-center">
+                <button
+                  title="Delete Item"
+                  style="border: none; background: none; font-size: 20px"
+                  (click)="deleteProduct(prod._id)"
+                >
+                  <i
+                    class="fa fa-trash"
+                    style="color: red"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="totalDocs===0">
+            <h3 class="text-center">No Data Found</h3>
+      </div>
+    </div>
+
+    <!-- =============================Modal============================ -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+              *ngIf="status === false"
+            >
+              <i class="fa fa-paint-brush" aria-hidden="true"></i> Edit Product
+            </h5>
+            <h5
+              class="modal-title text-success"
+              id="exampleModalLabel"
+              *ngIf="status === true"
+            >
+              <i class="fa fa-paint-brush" aria-hidden="true"></i>Product
+              Updated
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form
+              [formGroup]="productForm"
+              (submit)="updateProduct(productForm)"
+              *ngIf="product && status === false"
+            >
+              <fieldset>
+                <input type="hidden" value="" formControlName="id" />
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter Product Name"
+                    formControlName="name"
+                  />
+                  <small
+                    class="form-text text-muted err-msg"
+                    *ngIf="
+                      productForm.get('name').touched &&
+                      productForm.get('name').hasError('required')
+                    "
+                    >* product name is required
+                  </small>
+                </div>
+                <div class="form-group">
+                  <label for="name">Price</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter Product Price"
+                    formControlName="price"
+                  />
+                  <small
+                    class="form-text text-muted err-msg"
+                    *ngIf="
+                      productForm.get('price').touched &&
+                      productForm.get('price').hasError('required')
+                    "
+                    >* product price is required and only number should be
+                    entered</small
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleSelect1">Select Category</label>
+                  <select class="form-control" formControlName="category">
+                    <option value="" disabled>Select Category</option>
+                    <option
+                      *ngFor="let cat of catList"
+                      value="{{ cat._id }}"
+                      [attr.selected]="cat.id === product.category"
+                    >
+                      {{ cat.name }}
+                    </option>
+                  </select>
+                  <small
+                    class="form-text text-muted err-msg"
+                    *ngIf="
+                      productForm.get('category').touched &&
+                      productForm.get('category').hasError('required')
+                    "
+                    >* category is required</small
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleSelect1">Short Description</label>
+                  <textarea
+                    class="form-control"
+                    formControlName="description"
+                    id="exampleTextarea2"
+                    rows="3"
+                  ></textarea>
+                  <small
+                    id="fileHelp"
+                    class="form-text text-muted err-msg"
+                    *ngIf="
+                      productForm.get('description').touched &&
+                      productForm.get('description').hasError('required')
+                    "
+                    >* short description is required</small
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input
+                    type="file"
+                    class="form-control-file"
+                    name="image"
+                    (change)="onFileSelected($event)"
+                  />
+                  <small id="fileHelp" class="form-text text-muted"
+                    >you can upload product image from here</small
+                  >
+                </div>
+
+                <fieldset class="form-group">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        checked=""
+                        formControlName="isAvailable"
+                      />
+                      Product is Available
+                    </label>
+                  </div>
+                </fieldset>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="!productForm.valid"
+                >
+                  Submit
+                </button>
+              </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a
+              type="button"
+              class="btn btn-secondary"
+              [routerLink]="['/admin/list-product']"
+              data-dismiss="modal"
+              >Close</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
