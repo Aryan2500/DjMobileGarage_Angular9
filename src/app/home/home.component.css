@@ -1,0 +1,68 @@
+#mainBox {
+  margin-bottom: 200px !important;
+}
+ #dealingIn{
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    opacity: .8;
+    z-index: 1000;
+ }
+ #productsWeHave{
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    opacity: .8;
+    z-index: 1000;
+}
+#companyName {
+  position: absolute;
+  top: 90%;
+  animation-name: slideInFromTop;
+  animation-duration: 4s;
+  text-shadow: 2px 2px 18px blue !important;
+  font-weight: bolder;
+  font-size: 70px;
+  text-align: center;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-1000%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+footer {
+  background-color: black;
+  text-align: center;
+  color: white;
+  position: relative;
+  width: 100% !important;
+  height: 200px;
+}
+
+#footerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.round-button{
+    border-radius: 50%;
+}
+.product-container{
+    text-align: center !important;
+    box-shadow: 1px 10px 18px 1px;
+    margin-top: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: opacity , 1s;
+}
+
+.product-container:hover{
+    opacity: 0.5;
+}

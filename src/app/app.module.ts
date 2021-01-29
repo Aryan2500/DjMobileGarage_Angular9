@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms'
 import { SpinnerInterceptor } from './spinner.interceptor';
 import { CommonLayoutComponent } from './layout/common-layout/common-layout.component';
 import { ShareModuleModule } from './share-module/share-module.module';
+import { HomeComponent } from './home/home.component';
 
 // import { HttpClientModule} from "@angular/common/http"
 // import { AuthServiceService } from './auth/auth-service.service';
@@ -25,7 +26,8 @@ import { ShareModuleModule } from './share-module/share-module.module';
     SpinnerComponent,
     AdminLayoutComponent,
     AdminLoginComponent,
-    CommonLayoutComponent
+    CommonLayoutComponent,
+    HomeComponent
     
    
     

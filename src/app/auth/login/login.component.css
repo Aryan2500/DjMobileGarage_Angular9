@@ -4,7 +4,7 @@
     width: 450px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #f39c12;
+    background: black;
     position: relative;
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@
     width: 170px;
     top: -75px;
     border-radius: 50%;
-    background: #60a3bc;
+    background: white;
     padding: 10px;
     text-align: center;
 }
@@ -77,4 +77,8 @@
 .form-control{
     width: 250px;
     height: 55px;
+}
+
+.links>a{
+    color: white;
 }

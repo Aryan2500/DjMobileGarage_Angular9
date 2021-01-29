@@ -1,4 +1,4 @@
-@keyframes bouncing {
+/* @keyframes bouncing {
     0% {
         top: 40%;
    }
@@ -13,7 +13,7 @@
     100% {
         opacity: 1;
    }
-}
+} */
 .page-overlay-wrapper {
     position: fixed;
     width: 100%;
@@ -27,10 +27,16 @@
     height: 20%;
     position: fixed;
     top: 40%;
-    left: calc(50% - 10%);
-    z-index: 10000;
-    background-image: url("../../assets/bee.png");
+    left: 45%;
+    z-index: 100;
+    /* background-image: url("../../assets/bee.png");
     background-repeat: no-repeat;
     background-size: 97%;
-    animation: bouncing 0.4s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite alternate both;
+    animation: bouncing 0.4s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite alternate both; */
+}
+.roundSpinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
 }

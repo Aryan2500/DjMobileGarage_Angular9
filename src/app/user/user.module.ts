@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 
-import { NavigationBarComponent } from '../share-module/navigation-bar/navigation-bar.component';
 import { ShareModuleModule } from '../share-module/share-module.module';
 
 import { ProfileComponent } from './dashboard/profile/profile.component';

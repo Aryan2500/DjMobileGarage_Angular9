@@ -5,10 +5,11 @@ import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { SignInGuard } from "./guards/sign-in.guard";
+import { HomeComponent } from "./home/home.component";
 import { AdminLayoutComponent } from "./layout/admin-layout/admin-layout.component";
 import { CommonLayoutComponent } from "./layout/common-layout/common-layout.component";
 import { ADMIN_ROUTES } from "./routes/admin-layout-route";
-import { DEFAULT_ROUTES } from "./routes/default-layout-routes";
+
 import { USER_ROUTES } from "./routes/user-route";
 
 const routes: Routes = [
@@ -40,8 +41,8 @@ const routes: Routes = [
 
   {
     path:'',
-    component:CommonLayoutComponent,
-    children:DEFAULT_ROUTES
+    component:HomeComponent,
+     
   }
 ];
 

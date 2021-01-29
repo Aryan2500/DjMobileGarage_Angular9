@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/auth/auth-service.service';
+import { AuthServiceService } from '../auth/auth-service.service';
 
 @Component({
-  selector: 'app-navigation-bar',
-  templateUrl: './navigation-bar.component.html',
-  styleUrls: ['./navigation-bar.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class NavigationBarComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
+  
   isLogin :boolean
   constructor( private authService: AuthServiceService , private router:Router) {
       if(this.authService.isTokenPresent()){
@@ -24,7 +25,6 @@ export class NavigationBarComponent implements OnInit {
 
   logout(){
     this.authService.logout()
-    this.router.navigate(['/'])
+    this.router.navigate(['/login'])
   }
-
 }
