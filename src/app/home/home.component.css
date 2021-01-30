@@ -18,11 +18,13 @@
 #companyName {
   position: absolute;
   top: 90%;
+
   animation-name: slideInFromTop;
   animation-duration: 4s;
+  line-height:  70px;;
   text-shadow: 2px 2px 18px blue !important;
   font-weight: bolder;
-  font-size: 70px;
+  font-size: 60px;
   text-align: center;
 }
 
@@ -36,6 +38,7 @@
 }
 
 footer {
+  margin-top: 20px;
   background-color: black;
   text-align: center;
   color: white;

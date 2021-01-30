@@ -162,8 +162,9 @@
                     <option
                       *ngFor="let cat of catList"
                       value="{{ cat._id }}"
-                      [attr.selected]="cat.id === product.category"
+                      [selected]="cat._id == product.category"
                     >
+                      
                       {{ cat.name }}
                     </option>
                   </select>

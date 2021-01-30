@@ -1,79 +1,93 @@
-<body>
-  <div *ngIf="status===403" class="alert alert-dismissible alert-info">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4 class="alert-heading">Account Not Verified!</h4>
-    <p class="mb-0"><strong>we have sent an activation link to your email</strong>, click on the activation link</p>
-  </div>
-  <div *ngIf="status===404" class="alert alert-dismissible alert-info">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4 class="alert-heading">Account not found </h4>
-    <p class="mb-0"><strong>Try Login with Standard User Account</strong></p>
-  </div>
-  <div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-      <div class="user_card">
-        <div class="d-flex justify-content-center">
-          <div class="brand_logo_container">
-            <img
-              src="https://i.pinimg.com/originals/54/ba/a5/54baa52c0984d2706589463feafd60ff.png"
-              class="brand_logo"
-              alt="Logo"
+<div *ngIf="status === 403" class="alert alert-dismissible alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4 class="alert-heading">Account Not Verified!</h4>
+  <p class="mb-0">
+    <strong>we have sent an activation link to your email</strong>, click on the
+    activation link
+  </p>
+</div>
+<div *ngIf="status === 404" class="alert alert-dismissible alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4 class="alert-heading">Account not found</h4>
+  <p class="mb-0"><strong>Try Login with Standard User Account</strong></p>
+</div>
+<div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+      <div class="d-flex justify-content-center">
+        <div class="brand_logo_container">
+          <img
+            src="https://i.pinimg.com/originals/54/ba/a5/54baa52c0984d2706589463feafd60ff.png"
+            class="brand_logo"
+            alt="Logo"
+          />
+        </div>
+      </div>
+      <div class="d-flex justify-content-center form_container">
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="login(loginForm)"
+          autocomplete="off"
+        >
+          <div
+            class="input-group justify-content-center"
+            [ngStyle]="{ 'text-align': 'center' }"
+            *ngIf="status == 401"
+          >
+            <div class="input-group-append">
+              <div
+                class="alert alert-warning alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>Authentication Failed</strong><br />email or password is
+                incorrect !
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mt-2">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+           
+            <input
+              formControlName="email"
+              type="email"
+              name="email"
+              class="form-control input_user"
+              value=""
+              placeholder="example@example.com"
             />
           </div>
-        </div>
-        <div class="d-flex justify-content-center form_container">
-          <form
-            [formGroup]="loginForm"
-            (ngSubmit)="login(loginForm)"
-            autocomplete="off"
+          </div>
+          <small
+            class="err-msg mb-1"
+            *ngIf="
+              loginForm.get('email').touched &&
+              loginForm.get('email').hasError('required')
+            "
+            >* email address is required
+          </small>
+          <small
+            class="err-msg mb-1"
+            *ngIf="
+              (loginForm.get('email').touched &&
+                loginForm.get('email').hasError('email')) ||
+              status == 422
+            "
+            >* email address is not valid</small
           >
-            <div class="input-group  justify-content-center "  [ngStyle]="{'text-align':'center'}" *ngIf=" status == 401">
-              <div class="input-group-append">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong>Authentication Failed</strong><br>email or password is incorrect !
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="input-group mt-2">
-              <div class="input-group-append">
-                <span class="input-group-text"
-                  ><i class="fas fa-user"></i
-                ></span>
-              </div>
-              <input
-                formControlName="email"
-                type="email"
-                name="email"
-                class="form-control input_user"
-                value=""
-                placeholder="example@example.com"
-              />
-            </div>
-            <small
-              class="err-msg mb-1"
-              *ngIf="
-                loginForm.get('email').touched &&
-                loginForm.get('email').hasError('required')
-              "
-              >* email address is required
-            </small>
-            <small
-              class="err-msg mb-1"
-              *ngIf="
-                (loginForm.get('email').touched &&
-                  loginForm.get('email').hasError('email')) ||
-                status == 422
-              "
-              >* email address is not valid</small
-            >
-            <!-- <small class="err-msg mb-1" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')">* email address is required </small> -->
-            <div class="input-group mt-3">
-              <div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
-              </div>
+          <!-- <small class="err-msg mb-1" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')">* email address is required </small> -->
+          <div class="input-group mt-3">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+
               <input
                 formControlName="password"
                 type="password"
@@ -83,47 +97,46 @@
                 placeholder="*********"
               />
             </div>
-            <small
-              class="err-msg mb-1"
-              *ngIf="
-                loginForm.get('password').touched &&
-                loginForm.get('password').hasError('required')
-              "
-              >* password is required</small
-            >
-            <small
-              class="err-msg mb-1"
-              *ngIf="
-                loginForm.get('password').touched &&
-                loginForm.get('password').hasError('minlength')
-              "
-              >*password should be atleast 5 character long</small
-            >
+          </div>
+          <small
+            class="err-msg mb-1"
+            *ngIf="
+              loginForm.get('password').touched &&
+              loginForm.get('password').hasError('required')
+            "
+            >* password is required</small
+          >
+          <small
+            class="err-msg mb-1"
+            *ngIf="
+              loginForm.get('password').touched &&
+              loginForm.get('password').hasError('minlength')
+            "
+            >*password should be atleast 5 character long</small
+          >
 
-            <div class="d-flex justify-content-center mt-3 login_container">
-              <button
-                type="submit"
-                name="button"
-                class="form-control btn login_btn"
-                [disabled]="!loginForm.valid"
-              >
-                Login
-              </button>
-            </div>
-          </form>
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <button
+              type="submit"
+              name="button"
+              class="form-control btn login_btn"
+              [disabled]="!loginForm.valid"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+          Don't have an account?
+          <a [routerLink]="['/register']" class="ml-2">Sign Up</a>
         </div>
-
-        <div class="mt-4">
-          <div class="d-flex justify-content-center links">
-            Don't have an account? <a [routerLink]="['/register']" class="ml-2">Sign Up</a>
-          </div>
-          <div class="d-flex justify-content-center links">
-            <a href="#" >Forgot your password?</a>
-          </div>
+        <div class="d-flex justify-content-center links">
+          <a href="#">Forgot your password?</a>
         </div>
       </div>
-      
     </div>
   </div>
-  
-</body>
+</div>

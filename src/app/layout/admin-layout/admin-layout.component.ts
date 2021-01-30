@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/auth/auth-service.service';
 declare var $ : any
 @Component({
   selector: 'app-admin-layout',
@@ -7,7 +9,7 @@ declare var $ : any
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService : AuthServiceService , private router : Router) { }
 
   ngOnInit(): void {
     $(document).ready(function () {
@@ -41,5 +43,12 @@ export class AdminLayoutComponent implements OnInit {
       });  
     });
   }
+
+ 
+    logout(){
+      this.authService.logout()
+      this.router.navigate(['/'])
+    }
+   
 
 }

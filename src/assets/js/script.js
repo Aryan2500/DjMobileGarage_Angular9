@@ -8,7 +8,7 @@ $(document).ready(function () {
       } , 200)
     $(window).scroll(()=>{
         var scrollPosition = $(document).scrollTop();
-        console.log(scrollPosition)
+        // console.log(scrollPosition)
 
 
 

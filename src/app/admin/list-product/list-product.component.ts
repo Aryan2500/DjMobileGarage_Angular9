@@ -40,7 +40,8 @@ export class ListProductComponent implements OnInit {
   getCategories(){
     this.cateService.fetchAllCategory().subscribe(data=>{
       this.catList = data['data']
-      console.log(this.catList)
+
+      console.log((this.catList))
     } , err=>{
       this.catList = undefined
     })
@@ -107,10 +108,9 @@ export class ListProductComponent implements OnInit {
         description:this.product.description,
         isAvailable:this.product.isAvailable
         
-
-
       })
       this.oldFileName = this.product.image
+      console.log(this.product.category)
     })
   }
 
