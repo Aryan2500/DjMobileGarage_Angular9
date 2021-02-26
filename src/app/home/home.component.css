@@ -17,25 +17,25 @@
 }
 #companyName {
   position: absolute;
-  top: 90%;
-
-  animation-name: slideInFromTop;
+  top: 45%;
+  color: darkslategray;
+  /* animation-name: slideInFromTop; */
   animation-duration: 4s;
   line-height:  70px;;
-  text-shadow: 2px 2px 18px blue !important;
+  text-shadow: 5px 5px 18px gray !important;
   font-weight: bolder;
   font-size: 60px;
   text-align: center;
 }
-
+/* 
 @keyframes slideInFromTop {
   0% {
-    transform: translateY(-1000%);
+    transform: translateY(-600%);
   }
   100% {
     transform: translateY(0);
   }
-}
+} */
 
 footer {
   margin-top: 20px;

@@ -1,17 +1,14 @@
 $(document).ready(function () {
 
     $('#mobileImageBox').addClass('animate__animated animate__slideInLeft')
+    $('#companyNameBox').addClass('animate__animated animate__slideInRight')
+    
     $('#services_row').fadeOut();
     $('#productRow').fadeOut()
-    setTimeout(function(){
-        $("#mobileImageBox").addClass(' animate__bounce ');
-      } , 200)
+    
     $(window).scroll(()=>{
         var scrollPosition = $(document).scrollTop();
-        // console.log(scrollPosition)
-
-
-
+        
         if(scrollPosition>100 && scrollPosition<500){
             
               $("#services_row").fadeIn("slow") ;
