@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ReactiveFormsModule , FormGroup , FormControl, FormBuilder , Validators} from '@angular/forms'
+import { FormGroup , FormControl, FormBuilder , Validators} from '@angular/forms'
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 declare  var $ : any
@@ -10,7 +10,7 @@ declare  var $ : any
 })
 export class AddProductComponent implements OnInit {
 
-  catList :any
+  catList :any = ''
   productForm : FormGroup
   image: any;
   status: boolean;
