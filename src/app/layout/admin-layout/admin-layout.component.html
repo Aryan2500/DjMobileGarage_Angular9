@@ -6,14 +6,14 @@
       <ul class="nav sidebar-nav">
         <div class="sidebar-header">
         <div class="sidebar-brand">
-          <a [routerLink]="['/admin/']" [routerLinkActive]="['active']">Dj Mobile Garage</a></div></div>
+          <a [routerLink]="['/admin/']" >Dj Mobile Garage</a></div></div>
         <li class="dropdown">
        
       
        <li><a [routerLink]="['/admin/all-appointments/']" [routerLinkActive]="['active']"> <i class="fa fa-list"></i> All Appointments</a></li>
-       <li><a [routerLink]="['/admin/add-product']"> <i class="fa fa-shopping-bag"></i> Add Product</a></li>
-       <li><a [routerLink]="['/admin/list-product']"> <i class="fa fa fa-list"></i> List Product</a></li>     
-       <li><a [routerLink]="['/admin/add-category']"> <i class="fa fa-deviantart" aria-hidden="true"></i>  Add Category</a></li>
+       <li><a [routerLink]="['/admin/add-product']" [routerLinkActive]="['active']"> <i class="fa fa-shopping-bag"></i> Add Product</a></li>
+       <li><a [routerLink]="['/admin/list-product']" [routerLinkActive]="['active']"> <i class="fa fa fa-list"></i> List Product</a></li>     
+       <li><a [routerLink]="['/admin/add-category']" [routerLinkActive]="['active']"> <i class="fa fa-deviantart" aria-hidden="true"></i>  Add Category</a></li>
        <li><a href="#contact">Contact</a></li>
        <li><a href="#followme">Follow me</a></li>
        <li><a (click)="logout()">Logout</a></li>

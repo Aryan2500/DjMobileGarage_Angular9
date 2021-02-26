@@ -99,8 +99,9 @@ html { height: 100%;}
 .sidebar-nav li:hover{
   background: skyblue !important;
   border-radius: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  font-size: 13px;
   
 }
 .sidebar-nav li:hover:before,
@@ -286,6 +287,14 @@ html { height: 100%;}
   -webkit-transition: all .35s ease-in-out;
 }
 
+.active{
+  background: red !important;
+  border-radius: 10px;
+  margin: 4px;
+  border:2px solid whitesmoke;
+   
+   
+}
 /*-------------------------------*/
 /*            Overlay            */
 /*-------------------------------*/
