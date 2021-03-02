@@ -1,54 +1,113 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" [ngStyle]="{'opacity':'.95'}">
-    <a class="navbar-brand" href="#">Dj Mobile Garage</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarColor02"
-      aria-controls="navbarColor02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarColor02">
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+  [ngStyle]="{ opacity: '.95' }"
+>
+  <a class="navbar-brand" href="#">Dj Mobile Garage</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarColor02"
+    aria-controls="navbarColor02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse justify-content-between"
+    id="navbarColor02"
+  >
+    <div>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-          <a class="nav-link"  [routerLink]="['']" [routerLinkActive]="['active']"
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['']"
+            [routerLinkActive]="['active']"
             >Home
-            <span class="sr-only">(current)</span>
+            
           </a>
         </li>
-        <li *ngIf="isLogin" class="nav-item">
-          <a class="nav-link" [routerLink]="['/user/profile']" [routerLinkActive]="['active']">Profile</a>
-        </li>
         
-        <li *ngIf="isLogin"  class="nav-item dropdown">
+
+        <li *ngIf="isLogin" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
             aria-expanded="false"
-            >Manage Appointment </a
-          >
+            >Manage Appointment
+          </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item"  [routerLink]="['/user/new-appointment']" [routerLinkActive]="['active']" >Book New &nbsp;<i class="fa fa-plus" ></i></a>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/user/new-appointment']"
+              [routerLinkActive]="['active']"
+              >Book New &nbsp;<i class="fa fa-plus"></i
+            ></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['/user/all-appointments']" [routerLinkActive]="['active']">History &nbsp; <i class="fa fa-history" aria-hidden="true"></i>
+            <a
+              class="dropdown-item"
+              [routerLink]="['/user/all-appointments']"
+              [routerLinkActive]="['active']"
+              >History &nbsp; <i class="fa fa-history" aria-hidden="true"></i>
             </a>
           </div>
         </li>
       </ul>
-       
-      <a *ngIf="isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'20px'}" title="Logout" routerLink="/login" (click)="logout()"
-        ><i class="fas fa-sign-out-alt"></i
-      >&nbsp; Logout</a>
-      <a *ngIf="!isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'15px'}" title="Login" routerLink="/login" ><i class="fa fa-sign-in-alt" aria-hidden="true"></i>
-        Login</a>
-      <a *ngIf="!isLogin"  class="nav-link" [ngStyle]="{'color':'white' , 'font-size':'10px'}" title="Login" routerLink="/admin-login" ><i class="fa fa-user-secret" aria-hidden="true"></i>
-
-        Admin</a>
     </div>
-  </nav>
+    <div>
+      <ul class="navbar-nav mr-auto">
+         
+          
+         
+        <li *ngIf="isLogin" class="nav-item dropdown">
+          <img
+            data-toggle="dropdown"
+            style="cursor: pointer;"
+            src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
+            width="60"
+            height="60"
+            alt=""
+            srcset=""
+          />
+
+          <div class="dropdown-menu dropdown-menu-right">
+            <a
+            class="dropdown-item"
+            [routerLink]="['/user/profile']"
+            [routerLinkActive]="['active']"
+            >Profile</a
+          >
+            <a
+              *ngIf="isLogin"
+              class="dropdown-item"
+              [routerLink]="['/login']"
+              [routerLinkActive]="['active']"
+              (click)="logout()"
+              >Logout
+              <i
+                class="fas fa-sign-out-alt"
+                style="color: black; font-size: 20px"
+              ></i
+            ></a>
+            <div class="dropdown-divider"></div>
+            <a
+              *ngIf="!isLogin"
+              class="nav-link"
+              [ngStyle]="{ color: 'black', 'font-size': '15px' }"
+              title="Login"
+              routerLink="/login"
+              ><i class="fa fa-sign-in-alt" aria-hidden="true"></i> Login</a
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+
+     
+  </div>
+</nav>

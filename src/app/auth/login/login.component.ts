@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     console.log(credentials)
      this.auth_service.postLoginData(credentials).subscribe(data=>{
        if(data){
-         this.router.navigate(['/user/dashboard'])
+         this.router.navigate(['/user/profile'])
        }else{
          this.router.navigate(['/login'])
        }
