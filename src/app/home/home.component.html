@@ -1,5 +1,5 @@
-<div class="container-fluid mb-4" id="container">
-  <div class="row">
+<div class="container-fluid mb-4" id="container" >
+  <div class="row"  >
     <div class="col-lg-12">
       <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand link" [routerLink]="['/']">DJ Mobile Garage</a>
@@ -20,59 +20,72 @@
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link link" *ngIf="!isLogin" [routerLink]="['/login']" >Login </a>
+              <a
+                class="nav-link link"
+                *ngIf="!isLogin"
+                [routerLink]="['/login']"
+                >Login
+              </a>
             </li>
             <li class="nav-item" *ngIf="isLogin">
-              <a class="nav-link link" [routerLink]="['/user/profile']" >Go To Dashboard </a>
+              <a class="nav-link link" [routerLink]="['/user/profile']"
+                >Go To Dashboard
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link" *ngIf="!isLogin" [routerLink]="['/register']">Register</a>
+              <a
+                class="nav-link link"
+                *ngIf="!isLogin"
+                [routerLink]="['/register']"
+                >Register</a
+              >
             </li>
           </ul>
         </div>
       </nav>
       <div class="row m-4" id="mainBox">
-        <div  class="col-lg-6 justify-content-end"  id="mobileImageBox" >
-          <img src="assets/Mobile-Download-PNG.png" class="img-fluid mx-auto mb-4" />          
+        <div class="col-lg-6 justify-content-end" id="mobileImageBox">
+          <img
+            src="assets/Mobile-Download-PNG.png"
+            class="img-fluid mx-auto mb-4"
+          />
         </div>
         <div class="col-lg-6" id="companyNameBox">
-          <h2  id="companyName">DJ Mobile Garage</h2>
+          <h2 id="companyName">DJ Mobile Garage</h2>
         </div>
       </div>
 
       <div class="row p-4" id="services_row">
         <div class="col-lg-12">
           <div class="row">
-
             <div class="col-lg-12 mb-4 text-center bg-primary" id="dealingIn">
-               <h2 style="color: white;" >We are dealing In ....</h2>
+              <h2 style="color: white">We are dealing In ....</h2>
             </div>
 
-            <div class="col-lg-4">              
-              <div class="card mb-3  ">
+            <div class="col-lg-4">
+              <div class="card mb-3">
                 <h3 class="card-header details">Card header</h3>
                 <div class="card-body">
                   <h5 class="card-title details">Special title treatment</h5>
-                 
                 </div>
                 <img
-                src="https://sc04.alicdn.com/kf/H178bd6f32f7743e8aba5eed64cd02a00q.png"
-                alt=""
-                srcset=""
-                class="img-fluid mx-auto imgBox"
-              />
+                  src="https://sc04.alicdn.com/kf/H178bd6f32f7743e8aba5eed64cd02a00q.png"
+                  alt=""
+                  srcset=""
+                  class="img-fluid mx-auto imgBox"
+                />
                 <div class="card-body details">
-                  <p class="card-text">OCA optical clear adhesive film is also one of the important
+                  <p class="card-text">
+                    OCA optical clear adhesive film is also one of the important
                     raw materials for mobile phone touch screenOCA optical clear
                     adhesive film is also one of the important raw materials for
                     mobile phone touch screenOCA optical clear adhesive film is
                     also one of the important raw materials for mobile phone
                     touch screenOCA optical clear adhesive film is also one of
-                    the important raw materials for mobile phone touch screen</p>
+                    the important raw materials for mobile phone touch screen
+                  </p>
                 </div>
-                <div class="card-footer text-muted details">
-                  2 days ago
-                </div>
+                <div class="card-footer text-muted details">2 days ago</div>
               </div>
             </div>
 
@@ -81,26 +94,26 @@
                 <h3 class="card-header details">Card header</h3>
                 <div class="card-body">
                   <h5 class="card-title details">Special title treatment</h5>
-                 
                 </div>
                 <img
-                src=" assets/107-1076458_mobile-repairing-parts-png-transparent-png-removebg-preview (1).png"
-                alt=""
-                srcset=""
-                class="img-fluid mx-auto imgBox"
-              />
+                  src=" assets/107-1076458_mobile-repairing-parts-png-transparent-png-removebg-preview (1).png"
+                  alt=""
+                  srcset=""
+                  class="img-fluid mx-auto imgBox"
+                />
                 <div class="card-body details">
-                  <p class="card-text">OCA optical clear adhesive film is also one of the important
+                  <p class="card-text">
+                    OCA optical clear adhesive film is also one of the important
                     raw materials for mobile phone touch screenOCA optical clear
                     adhesive film is also one of the important raw materials for
                     mobile phone touch screenOCA optical clear adhesive film is
                     also one of the important raw materials for mobile phone
                     touch screenOCA optical clear adhesive film is also one of
                     the important raw materials for mobile phone touch screen/p>
+                  </p>
                 </div>
-                <div class="card-footer text-muted details">
-                  2 days ago
-                </div>
+
+                <div class="card-footer text-muted details">2 days ago</div>
               </div>
             </div>
 
@@ -109,35 +122,34 @@
                 <h3 class="card-header details">Card header</h3>
                 <div class="card-body">
                   <h5 class="card-title details">Special title treatment</h5>
-                 
                 </div>
                 <img
-                src=" assets/107-1076458_mobile-repairing-parts-png-transparent-png-removebg-preview (1).png"
-                alt=""
-                srcset=""
-                class="img-fluid mx-auto imgBox"
-              />
-                <div class="card-body details ">
-                  <p class="card-text">OCA optical clear adhesive film is also one of the important
+                  src=" assets/107-1076458_mobile-repairing-parts-png-transparent-png-removebg-preview (1).png"
+                  alt=""
+                  srcset=""
+                  class="img-fluid mx-auto imgBox"
+                />
+                <div class="card-body details">
+                  <p class="card-text">
+                    OCA optical clear adhesive film is also one of the important
                     raw materials for mobile phone touch screenOCA optical clear
                     adhesive film is also one of the important raw materials for
                     mobile phone touch screenOCA optical clear adhesive film is
                     also one of the important raw materials for mobile phone
                     touch screenOCA optical clear adhesive film is also one of
                     the important raw materials for mobile phone touch screen/p>
+                  </p>
                 </div>
-                <div class="card-footer text-muted details">
-                  2 days ago
-                </div>
+
+                <div class="card-footer text-muted details">2 days ago</div>
               </div>
             </div>
-
           </div>
 
           <!-- Product list -->
           <div class="row mt-4" id="productRow">
             <div class="col-lg-12 text-center bg-primary" id="productsWeHave">
-              <h3 style="color: white;">Products We have....</h3>
+              <h3 style="color: white">Products We have....</h3>
             </div>
             <div class="col-lg-4">
               <div class="product-container">
@@ -159,7 +171,6 @@
                 <span style="text-decoration: line-through; color: red"
                   >$1,399.99</span
                 >
-               
               </div>
             </div>
             <div class="col-lg-4">
@@ -182,7 +193,6 @@
                 <span style="text-decoration: line-through; color: red"
                   >$1,399.99</span
                 >
-               
               </div>
             </div>
             <div class="col-lg-4">
@@ -205,7 +215,6 @@
                 <span style="text-decoration: line-through; color: red"
                   >$1,399.99</span
                 >
-                
               </div>
             </div>
             <div class="col-lg-4">
@@ -228,7 +237,6 @@
                 <span style="text-decoration: line-through; color: red"
                   >$1,399.99</span
                 >
-               
               </div>
             </div>
           </div>
@@ -241,4 +249,18 @@
       <span id="footerText"> Copyright 2021 Dj Mobile Garage </span>
     </footer>
   </div>
+
+  
 </div>
+
+ 
+   <!-- <div class="loadingio-spinner-cube-mk3avibuovr" id="spinner" *ngIf="spinner===true">
+    <div class="ldio-qvl0y5ws6c" id="spinner_inner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div> -->
+ 
+   

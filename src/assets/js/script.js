@@ -1,4 +1,5 @@
 $(document).ready(function () {
+   
   $("#services_row").fadeOut();
   $("#productRow").fadeOut();
 
@@ -20,3 +21,12 @@ $(document).ready(function () {
     }
   });
 });
+
+ 
+window.onload = function(){
+document.getElementById('spinner').style.display = 'none'
+ 
+ 
+
+ 
+}

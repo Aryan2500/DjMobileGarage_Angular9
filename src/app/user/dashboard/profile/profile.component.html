@@ -1,36 +1,160 @@
 <div class="container" [ngStyle]="{ 'margin-top': '120px' }">
-    <div class="row bg-primary"  [ngStyle]="{ 'height':'200px'}">
-        <div class="col-12 d-flex justify-content-center" id="photoSection"> 
-            <img id="images" src="https://i.stack.imgur.com/gBMMe.png?s=328&g=1"  width="220" height="220" alt="" srcset="">
-        </div>
-         
+  <div class="row bg-primary" [ngStyle]="{ height: '200px' }">
+    <div class="col-12 d-flex justify-content-center " id="photoSection">
+      <img
+        id="images"
+        class="animate__animated animate__backInDown"
+        src="https://i.stack.imgur.com/gBMMe.png?s=328&g=1"
+        width="220"
+        height="220"
+        alt=""
+        srcset=""
+      />
     </div>
-    <div class="row">
-        <div class="col-12">
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div
+        class="row justify-content-end navbar-dark bg-dark"
+        id="profile_detail_row"
+      >
+        <div class="col-md-12 mt-4 animate__animated animate__bounce">
+          <h2 class="mt-3 mr-3 text-right" id="profile_heading">
+            Profile Details
+            <button
+              type="button"
+              data-toggle="tooltip"
+              title="Edit"
+              *ngIf="editable === false"
+              style="background: none; border: none; color: azure"
+              (click)="edit()"
+            >
+              <i class="far fa-edit"></i>
+            </button>
+            <button
+              type="button"
+              data-toggle="tooltip"
+              title="Save"
+              *ngIf="editable === true"
+              style="background: none; border: none; color: azure"
+              (click)="saveData(profileForm)"
+             
+              [disabled]="!profileForm.valid"
+            >
+               
+              <i  [ngClass]="{'disabled_color': profileForm.invalid}" class="fas fa-save"></i>
+            </button>
+          </h2>
+        </div>
+      </div>
 
-            <div class="row justify-content-end navbar-dark bg-dark " id="profile_detail_row"   >
-                <div class="col-md-12 mt-4">
-                    <h2 class="mt-3 mr-3 text-right" id="profile_heading"  >Profile Details</h2>
-                </div>
+      <div class="row mt-4" id="details_row">
+        <div class="col-12" *ngIf="editable == false">
+          <div class="row">
+            <div class="col-4 animate__animated animate__backInLeft">
+              <h5><i class="fa fa-id-badge" aria-hidden="true"></i> Name</h5>
+              <h5>
+                <i class="fa fa fa-envelope" aria-hidden="true"></i> Email
+              </h5>
+              <h5><i class="fa fa-mobile" aria-hidden="true"></i> Phone</h5>
+              <h5>
+                <i class="fa fa-map-marker" aria-hidden="true"></i> Address
+              </h5>
             </div>
 
-            <div class="row mt-4 " id="details_row">
-                <div class="col-4">
-                    <h5><i class="fa fa-id-badge" aria-hidden="true"></i> Name</h5>
-                    <h5><i class="fa fa fa-envelope" aria-hidden="true"></i> Email</h5>
-                    <h5><i class="fa fa-mobile" aria-hidden="true"></i> Phone </h5>
-                    <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Address</h5>
-                    
-                </div>
-                <div class="col-8">
-                    <h5>Arun Kumar</h5>
-                    <p id="email">arun@gmail.com</p>
-                    <h5>9599269070</h5>
-                     <h5><address  id="address">Extra 30/108 , Trilok puri ,Delhi</address></h5> 
-                </div>
+            <div class="col-8 animate__animated  animate__backInRight">
+              <h5>Arun Kumar</h5>
+              <p id="email">arun@gmail.com</p>
+              <h5>9599269070</h5>
+              <h5>
+                <address id="address">
+                  Extra 30/108 , Trilok puri ,Delhi
+                </address>
+              </h5>
             </div>
-            
+          </div>
         </div>
+
+        <div class="col-12" *ngIf="editable == true">
+          <form [formGroup]="profileForm"  >
+            <table class="table table-hover">
+              <tbody>
+                <tr >
+                  <th scope="row" class="animate__animated animate__bounceInLeft">Name</th>
+                  <td class="animate__animated animate__fadeInDown">
+                    <input 
+                      formControlName="name"
+                      type="text"
+                      class="form-control-plaintext"
+                      id="staticEmail"
+                      value="ARUN KUMAR"
+                      placeholder="Name"
+                      [ngClass]="{'has-error':profileForm.get('name').touched && profileForm.get('name').hasError('required')}"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="animate__animated animate__bounceInLeft">Email</th>
+                  <td class="animate__animated animate__fadeInDown">
+                    <input
+                    formControlName="email"
+                      type="email"
+                      readonly
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      value="arun@gmail.com(Read Only)"
+                      aria-describedby="emailHelp"
+                    />
+                  </td>
+                </tr>
+                <tr >
+                  <th scope="row" class="animate__animated animate__bounceInLeft">Phone Number</th>
+                  <td class="animate__animated animate__fadeInDown">
+                    <input
+                    type="text"
+                    class="form-control-plaintext"
+                    id="phone"
+                    formControlName="phone"
+                    placeholder="Ex. 9594569294"
+                    maxlength="10"
+                  
+                    [ngClass]="{'has-error':(profileForm.get('phone').touched && profileForm.get('phone').hasError('required'))||(profileForm.get('phone').touched && profileForm.get('phone').hasError('minlength'))}"
+                  />
+                  </td>
+                </tr>
+                <tr class="table-secondary">
+                  <th scope="row" class="animate__animated animate__bounceInLeft">Address</th>
+                  <td class="animate__animated animate__fadeInDown">
+                    <input
+                    formControlName="address"
+                      type="text"
+                      class="form-control-plaintext"
+                      id="exampleInputAddress"
+                      placeholder="Address"
+                      [ngClass]="{'has-error':profileForm.get('address').touched && profileForm.get('address').hasError('required') }"
+                    />
+                  </td>
+                </tr>
+
+                <tr class="table-secondary">
+                    <th scope="row" class="animate__animated animate__bounceInLeft">  User Image   </th>
+                    <td  class="animate__animated animate__fadeInDown" >
+                      <input
+                        name="avtar"
+                        type="file"
+                        class="form-control-plaintext"
+                        id="exampleAvtar"
+                        placeholder="Select Jpg File"
+                        (change)="onFileSelected($event)"
+                      />
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-hardCoded
+ 

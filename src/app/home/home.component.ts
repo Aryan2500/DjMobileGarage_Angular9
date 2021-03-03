@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit , ChangeDetectorRef, OnChanges, SimpleChanges  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth/auth-service.service';
 
@@ -7,11 +7,13 @@ import { AuthServiceService } from '../auth/auth-service.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit      {
 
   
   isLogin :boolean
-  constructor( private authService: AuthServiceService , private router:Router) {
+  loadContent: boolean = false;
+  spinner: boolean = true;
+  constructor( private authService: AuthServiceService , private router:Router  ) {
       if(this.authService.isTokenPresent()){
           this.isLogin = true
       }else{
@@ -19,8 +21,11 @@ export class HomeComponent implements OnInit {
       }
 
    }
+   
+   
 
   ngOnInit(): void {
+     
   }
 
   logout(){

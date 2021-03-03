@@ -62,41 +62,42 @@ export class CreateAppointmentComponent implements OnInit {
 
   create_Appointment(appointForm) {
     const fd = new FormData();
-    
-    fd.append('title', appointForm.get('problem_Title').value)
-    fd.append('description', appointForm.get('problem_Description').value)
-    fd.append('pick_up_date', appointForm.get('pickup_Date').value)
-    fd.append('pick_up_time', appointForm.get('pickup_Time').value+ " " + appointForm.value.meridian)
-    fd.append('phone', appointForm.get('user_Phone').value)
-    fd.append('address', appointForm.get('user_Address').value)
-    fd.append('image', appointForm.get('problem_Image').value)
-    
-    this.appointmentService
-      .postAppointment(fd)
-      .subscribe((data) => {
-        this.product = data;
-        console.log(this.product)
-        if (this.product) {
-          this.title = "Appointment Fixed";
-          this.msg =
-            "Your Appointment is successfuly Fixed - Appointment Number is " +
-            this.product.appointment_number;
 
-          // $("#modal").modal("show")
-          // $("#modal").modal({backdrop: 'static', keyboard: false})
-          $("#modal").modal({
-            backdrop: "static",
-            keyboard: false,
-            show: true,
-          });
-        }
-      });
+    fd.append("title", appointForm.get("problem_Title").value);
+    fd.append("description", appointForm.get("problem_Description").value);
+    fd.append("pick_up_date", appointForm.get("pickup_Date").value);
+    fd.append(
+      "pick_up_time",
+      appointForm.get("pickup_Time").value + " " + appointForm.value.meridian
+    );
+    fd.append("phone", appointForm.get("user_Phone").value);
+    fd.append("address", appointForm.get("user_Address").value);
+    fd.append("image", appointForm.get("problem_Image").value);
+
+    this.appointmentService.postAppointment(fd).subscribe((data) => {
+      this.product = data;
+      console.log(this.product);
+      if (this.product) {
+        this.title = "Appointment Fixed";
+        this.msg =
+          "Your Appointment is successfuly Fixed - Appointment Number is " +
+          this.product.appointment_number;
+
+        // $("#modal").modal("show")
+        // $("#modal").modal({backdrop: 'static', keyboard: false})
+        $("#modal").modal({
+          backdrop: "static",
+          keyboard: false,
+          show: true,
+        });
+      }
+    });
   }
 
   onFileSelected(event) {
     this.image = event.target.files[0];
-    this.appointForm.get('problem_Image').setValue(this.image)
-    //  console.log(this.image)
+    this.appointForm.get("problem_Image").setValue(this.image);
+    // console.log(this.image)
   }
 
   dateEventEmmiter(data) {
